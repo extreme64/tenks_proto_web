@@ -1,0 +1,292 @@
+{
+    "title": "Proto Summer",
+    "description": "Small summer vibe 1 vs. 1 map for testing.",
+    "version": 1,
+    "created": "2019-06-25T00:00:00.000Z",
+    "modified": "2022-08-11T20:11:00.000Z",
+    "demo": true,
+    "author": {
+        "name": "MAst+G",
+        "email": [
+            "jd@example.com",
+            "jd@example.org"
+        ],
+        "website": "https://mastg-arts.com/games/proto-tanks"
+    },
+    "players": {
+        "max": 2,
+        "ai": 1,
+        "playerSlots": [
+            {
+                "playerId": 0,
+                "name": "Player 1",
+                "start": 10,
+                "controled": "user"
+            },
+            {
+                "playerId": 1,
+                "name": "Player 2",
+                "start": 33,
+                "controled": "ai"
+            }
+        ]
+    },
+    "tilesData": [
+        {
+            "id": 0,
+            "typeId": 1
+        },
+        {
+            "id": 1,
+            "typeId": 6
+        },
+        {
+            "id": 2,
+            "typeId": 6
+        },
+        {
+            "id": 3,
+            "typeId": 3
+        },
+        {
+            "id": 4,
+            "typeId": 2
+        },
+        {
+            "id": 5,
+            "typeId": 1
+        },
+        {
+            "id": 6,
+            "typeId": 2
+        },
+        {
+            "id": 7,
+            "typeId": 2
+        },
+        {
+            "id": 8,
+            "typeId": 1
+        },
+        {
+            "id": 9,
+            "typeId": 3
+        },
+        {
+            "id": 10,
+            "typeId": 7
+        },
+        {
+            "id": 11,
+            "typeId": 3
+        },
+        {
+            "id": 12,
+            "typeId": 2
+        },
+        {
+            "id": 13,
+            "typeId": 3
+        },
+        {
+            "id": 14,
+            "typeId": 3
+        },
+        {
+            "id": 15,
+            "typeId": 3
+        },
+        {
+            "id": 16,
+            "typeId": 1
+        },
+        {
+            "id": 17,
+            "typeId": 1
+        },
+        {
+            "id": 18,
+            "typeId": 3
+        },
+        {
+            "id": 19,
+            "typeId": 2
+        },
+        {
+            "id": 20,
+            "typeId": 5
+        },
+        {
+            "id": 21,
+            "typeId": 3
+        },
+        {
+            "id": 22,
+            "typeId": 2
+        },
+        {
+            "id": 23,
+            "typeId": 2
+        },
+        {
+            "id": 24,
+            "typeId": 1
+        },
+        {
+            "id": 25,
+            "typeId": 3
+        },
+        {
+            "id": 26,
+            "typeId": 3
+        },
+        {
+            "id": 27,
+            "typeId": 3
+        },
+        {
+            "id": 28,
+            "typeId": 2
+        },
+        {
+            "id": 29,
+            "typeId": 3
+        },
+        {
+            "id": 30,
+            "typeId": 3
+        },
+        {
+            "id": 31,
+            "typeId": 3
+        },
+        {
+            "id": 32,
+            "typeId": 3
+        },
+        {
+            "id": 33,
+            "typeId": 3
+        },
+        {
+            "id": 34,
+            "typeId": 3
+        },
+        {
+            "id": 35,
+            "typeId": 8
+        },
+        {
+            "id": 36,
+            "typeId": 3
+        },
+        {
+            "id": 37,
+            "typeId": 3
+        },
+        {
+            "id": 38,
+            "typeId": 4
+        },
+        {
+            "id": 39,
+            "typeId": 3
+        },
+        {
+            "id": 40,
+            "typeId": 1
+        },
+        {
+            "id": 41,
+            "typeId": 5
+        },
+        {
+            "id": 42,
+            "typeId": 2
+        },
+        {
+            "id": 43,
+            "typeId": 3
+        },
+        {
+            "id": 44,
+            "typeId": 4
+        },
+        {
+            "id": 45,
+            "typeId": 1
+        },
+        {
+            "id": 46,
+            "typeId": 7
+        },
+        {
+            "id": 47,
+            "typeId": 1
+        },
+        {
+            "id": 48,
+            "typeId": 1
+        },
+        {
+            "id": 49,
+            "typeId": 3
+        },
+        {
+            "id": 50,
+            "typeId": 3
+        },
+        {
+            "id": 51,
+            "typeId": 2
+        },
+        {
+            "id": 52,
+            "typeId": 4
+        },
+        {
+            "id": 53,
+            "typeId": 3
+        },
+        {
+            "id": 54,
+            "typeId": 5
+        },
+        {
+            "id": 55,
+            "typeId": 5
+        },
+        {
+            "id": 56,
+            "typeId": 1
+        },
+        {
+            "id": 57,
+            "typeId": 3
+        },
+        {
+            "id": 58,
+            "typeId": 3
+        },
+        {
+            "id": 59,
+            "typeId": 4
+        },
+        {
+            "id": 60,
+            "typeId": 3
+        },
+        {
+            "id": 61,
+            "typeId": 3
+        },
+        {
+            "id": 62,
+            "typeId": 2
+        },
+        {
+            "id": 63,
+            "typeId": 2
+        }
+    ]
+}

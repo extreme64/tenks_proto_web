@@ -1,0 +1,23 @@
+body {
+  --map-item-size: 96px;
+}
+
+[data-render-block="map-matrix"] {
+  display: flex;
+  width: 768px;
+  height: 768px;
+  margin: auto;
+  border: 2px dashed gray;
+  flex-wrap: wrap;
+}
+
+[data-obj-type^="map-item-"] {
+  display: flex;
+  min-width: var(--map-item-size);
+  width: var(--map-item-size);
+  height: var(--map-item-size);
+}
+
+[data-texture="terrain-1"] {
+  background-repeat: no-repeat;
+}

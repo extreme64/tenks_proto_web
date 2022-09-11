@@ -1,0 +1,39 @@
+body {
+  background-color: rgb(28, 29, 27);
+  font-family: sans-serif;
+}
+
+
+#game {
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+}
+
+hud,
+ui {
+  display: flex;
+  width: 768px;
+  height: 768px;
+  background: fixed;
+  position: absolute;
+}
+
+hud {
+  z-index: 90;
+}
+hud status {
+  display: flex;
+  width: inherit;
+  height: inherit;
+  justify-content: center;
+  align-items: flex-start;
+}
+hud status score {
+  color: white;
+}
+
+ui {
+  z-index: 100;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Proto Summer - Map</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="../../src/styles.css">
+  <link rel="stylesheet" href="../../src/terrain.css">
+  <link rel="stylesheet" href="../../src/tiles.css">
+  <link rel="stylesheet" href="../../src/sub_tiles.css">
+  <script type="module" src="../../src/subTile.js"></script>
+  <script type="module" src="../../src/tile.js"></script>
+  <script type="module" src="../../src/map.js"></script>
+  <script type="module" src="../../src/index.js"></script>
+</head>
+
+<body>
+  <div id="game">
+    <nav></nav>
+    <section data-render-block="map-matrix"></section>
+    
+    <hud data-render-block="hud-info">
+      <status>
+        <score>
+          <player data-player="1">4</player>
+          <player data-player="2">2</player>
+        </score>
+      </status>
+    </hud>
+
+    <ui data-render-block="hud-info"></ui>
+  </div>
+
+</body>
+
+</html>
