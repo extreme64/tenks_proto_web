@@ -44,7 +44,7 @@ var ready = (callback) => {
 	else document.addEventListener("DOMContentLoaded", callback);
 };
 
-ready(() => {
+ready(() => { 
 
 	let levelMapWrap = document.querySelector('[data-render-block="map-matrix"]');
 
@@ -69,7 +69,7 @@ ready(() => {
 			console.table(value.default.author.name) 
 			console.table(value.default.author.email) 
 			console.table(value.default.players)
-			console.table(value.default.tilesData)
+			// console.table(value.default.tilesData)
 		
 		
 			gameMapObject.buildDom()
@@ -79,6 +79,15 @@ ready(() => {
 	// console.table(mapddd)
 
 
+	let wc = document.querySelector('minimap-panel')
+	// console.dir(wc.shadowRoot);
 
 
+	// customElements.whenDefined('minimap-panel').then(() => {
+	// 	let wc = document.querySelector('minimap-panel')
+	// 	console.dir(wc.shadowRoot);
+	// })
+
+
+	// document.querySelector('[slot = "typeDescription"]').innerText = 'POI'
 });

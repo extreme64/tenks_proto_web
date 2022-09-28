@@ -4,6 +4,10 @@
 <head>
   <title>Proto Summer - Map</title>
   <meta charset="UTF-8" />
+  
+  <!-- WebComps -->
+  <script type="module" src="../../src/components/map/minimap_ui_panel.js"></script>
+
   <link rel="stylesheet" href="../../src/styles.css">
   <link rel="stylesheet" href="../../src/terrain.css">
   <link rel="stylesheet" href="../../src/tiles.css">
@@ -12,7 +16,13 @@
   <script type="module" src="../../src/tile.js"></script>
   <script type="module" src="../../src/map.js"></script>
   <script type="module" src="../../src/index.js"></script>
+
+  
+ 
 </head>
+
+
+
 
 <body>
   <div id="game">
@@ -28,7 +38,21 @@
       </status>
     </hud>
 
-    <ui data-render-block="hud-info"></ui>
+    <ui data-render-block="hud-info">
+      <minimap-panel maptype="tactical">
+        <span slot="typeDescription">Basic</span>
+        <span slot="minimapTracing">
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+        </span>
+        <img src="ddd.jpg" alt="fdfd">
+      </minimap-panel>
+
+      <panel data-render-block="info">info</panel>
+      <panel data-render-block="actions">actions</panel>
+    </ui>
   </div>
 
 </body>
