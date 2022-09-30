@@ -6,7 +6,11 @@
   <meta charset="UTF-8" />
   
   <!-- WebComps -->
-  <script type="module" src="../../src/components/map/minimap_ui_panel.js"></script>
+  <script type="module" src="../../src/components/test_proto.js"></script>
+  <script type="module" src="../../src/components/general/panel.js"></script>
+  <script type="module" src="../../src/components/general/controls.js"></script>
+  <script type="module" src="../../src/components/map/minimap.js"></script>
+
 
   <link rel="stylesheet" href="../../src/styles.css">
   <link rel="stylesheet" href="../../src/terrain.css">
@@ -39,19 +43,24 @@
     </hud>
 
     <ui data-render-block="hud-info">
-      <minimap-panel maptype="tactical">
-        <span slot="typeDescription">Basic</span>
-        <span slot="minimapTracing">
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-        </span>
-        <img src="ddd.jpg" alt="fdfd">
-      </minimap-panel>
+      <panel-ui panelType="mapView">
+        <minimap-preview slot="minimapPreview" maptype="tactical">
+          <span slot="typeDescription">Basic</span>
+          <span slot="minimapTracing">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+          </span>
+          <span slot="minimapControls">
+            <controls-ui type="minimap"></controls-ui>
+          </span>
+        </minimap-preview>
 
-      <panel data-render-block="info">info</panel>
-      <panel data-render-block="actions">actions</panel>
+      </panel-ui>
+
+      <!-- <panel data-render-block="info">info</panel>
+      <panel data-render-block="actions">actions</panel> -->
     </ui>
   </div>
 

@@ -37,12 +37,3 @@ hud status score {
 ui {
   z-index: 100;
 }
-
-/* [data-render-block="map"] {
-  width: 148px;
-  height: 148px;
-  background: gray;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-} */

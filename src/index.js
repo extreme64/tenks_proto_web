@@ -61,25 +61,39 @@ ready(() => {
 	}
 
 	let mapddd = loadMapData()
+
 	mapddd.then(
-		function (value) { 
-			console.table(value.default.title) 
+		function (value) {
+			console.table(value.default.title)
 			document.title = value.default.title
-			console.table(value.default.description) 
-			console.table(value.default.author.name) 
-			console.table(value.default.author.email) 
+			console.table(value.default.description)
+			console.table(value.default.author.name)
+			console.table(value.default.author.email)
 			console.table(value.default.players)
 			// console.table(value.default.tilesData)
-		
-		
+
+
 			gameMapObject.buildDom()
-		},
-		function (value) {}
+
+			//feed data into minimap
+			customElements.whenDefined('minimap-preview').then(() => {
+				let minimap = document.querySelector('minimap-preview')
+
+				minimap.setData(value.default.tilesData)
+
+				// console.dir(minimap.getData());
+			})
+		}
+	).then(
+		function(value) {		
+			
+		}
 	)
-	// console.table(mapddd)
+		// console.table(mapddd)
+		
 
 
-	let wc = document.querySelector('minimap-panel')
+	// let wc = document.querySelector('test-protol')
 	// console.dir(wc.shadowRoot);
 
 
