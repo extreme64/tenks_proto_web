@@ -71,26 +71,23 @@ class Minimap extends HTMLElement {
 
             let color
             switch(item.typeId){
-                case 0:
-                    color = "#7d4d35"
-                    break
                 case 1:
-                    color = "#2f8136"
+                    color = "#865e40"
                     break
                 case 2:
-                    color = "#2e9237"
+                    color = "#813b30"
                     break
                 case 3:
                     color = "#499321"
                     break
                 case 4:
-                    color = "#184c1c"
+                    color = "#266a2c"
                     break
                 case 5:
                     color = "#275842"
                     break
                 case 6:
-                    color = "#184c1c"
+                    color = "#28752e"
                     break
                 case 7:
                     color = "#4160c3"
