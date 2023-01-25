@@ -55,16 +55,25 @@ export default class GameMap {
     
     buildDom(mapSize) {
 
-        let mapItem = this.tiles
         let levelMapWrap = this.elementWrap
 
+        
+        let itemsArray = this.tiles
+        let itemsArraySize = itemsArray.length
+            
+        let mapItem = []
+
+        for (let r = 0; r < itemsArraySize; r++) {
+            mapItem[r] = [this.tiles[r]["typeId"]]
+        }
         mapItem.map((item, index) => {
             
+            // item = (Array.isArray(item)) ? item["typeId"] : item[0]
             /* Tile element */
             let itemElementDOM = document.createElement("span");
 
             /* CSS class */
-            let classStringFromdictionary = SubTile.getClassStringById(item[0])
+            let classStringFromdictionary = SubTile.getClassStringById(item[0]) /* item[o] */
             let typeClassName
             if (classStringFromdictionary !== '') {
                 typeClassName = classStringFromdictionary
@@ -142,7 +151,16 @@ export default class GameMap {
    */
     calculateSubTypes(item, tIndex) {
 
-        let mapItem = this.tiles
+        let itemsArray = this.tiles
+        let itemsArraySize = itemsArray.length
+
+        let mapItem = []
+
+        for (let r = 0; r < itemsArraySize; r++) {
+            mapItem[r] = [this.tiles[r]["typeId"]]
+        }
+
+
 
         let neigbours = ItemTile.neigbours(tIndex, 8)
 
@@ -165,11 +183,12 @@ export default class GameMap {
         neigbours.map(function (neigbour, index) {
 
             let areSame
+            let itemValuAsNumber = Number.parseInt(item[0])
 
             if (neigbour[1] >= 0 && neigbour[1] <= 64 - 1) {
 
                 //Check for all sides
-                areSame = (Number.parseInt(item[0]) === Number.parseInt(mapItem[neigbour[1]])) ? 0 : 1;
+                areSame = (itemValuAsNumber === Number.parseInt(mapItem[neigbour[1]])) ? 0 : 1;
 
 
                 // Clean edges more
@@ -184,125 +203,127 @@ export default class GameMap {
                     bottomcenter = neigbours[7][1]
                     bottomright = neigbours[8][1]
 
+              
+
                     switch (index) {
                         case 0:
 
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[topcenter])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[topcenter])) {
                                 areSame = 0
-                            } else if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerleft])) {
+                            } else if (itemValuAsNumber === Number.parseInt(mapItem[centerleft])) {
                                 areSame = 0 // horisontal edge
                             }
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[topcenter])
-                                && Number.parseInt(item[0]) === Number.parseInt(mapItem[centerleft])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[topleft])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[topcenter])
+                                && itemValuAsNumber === Number.parseInt(mapItem[centerleft])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[topleft])) {
                                 areSame = 2
                             }
 
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[topcenter])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[centerleft])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[topcenter])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[centerleft])) {
                                 areSame = "sub-1-e-4"
                             }
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerleft])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[topcenter])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[centerleft])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[topcenter])) {
                                 areSame = "sub-1-e-2"
                             }
 
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[topleft])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[topcenter])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[centerleft])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[topleft])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[topcenter])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[centerleft])) {
                                 areSame = "sub-3-e-1"
                             }
                             break;
                         case 2:
 
                             // Strait out neighbore 
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerright])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[centerright])) {
                                 areSame = 0
-                            } else if (Number.parseInt(item[0]) === Number.parseInt(mapItem[topcenter])) {
+                            } else if (itemValuAsNumber === Number.parseInt(mapItem[topcenter])) {
                                 areSame = 0
                             }
 
                             // Inset conner
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerright])
-                                && Number.parseInt(item[0]) === Number.parseInt(mapItem[topcenter])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[topright])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[centerright])
+                                && itemValuAsNumber === Number.parseInt(mapItem[topcenter])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[topright])) {
                                 areSame = 2
                             }
 
                             // Edge line connect to neightbor hor/ver
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerright])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[topcenter])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[centerright])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[topcenter])) {
                                 areSame = "sub-1-e-2"
                             }
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[topcenter])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[centerright])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[topcenter])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[centerright])) {
                                 areSame = "sub-1-e-6"
                             }
 
                             // Toching via diagonal aka two outset conners
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[topright])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[topcenter])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[centerright])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[topright])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[topcenter])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[centerright])) {
                                 areSame = "sub-3-e-3"
                             }
                             break;
                         case 6:
 
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerleft])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[centerleft])) {
                                 areSame = 0
-                            } else if (Number.parseInt(item[0]) === Number.parseInt(mapItem[bottomcenter])) {
+                            } else if (itemValuAsNumber === Number.parseInt(mapItem[bottomcenter])) {
                                 areSame = 0
                             }
 
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerleft])
-                                && Number.parseInt(item[0]) === Number.parseInt(mapItem[bottomcenter])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[bottomleft])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[centerleft])
+                                && itemValuAsNumber === Number.parseInt(mapItem[bottomcenter])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[bottomleft])) {
                                 areSame = 2
                             }
 
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[bottomcenter])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[centerleft])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[bottomcenter])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[centerleft])) {
                                 areSame = "sub-1-e-4"
                             }
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerleft])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[bottomcenter])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[centerleft])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[bottomcenter])) {
                                 areSame = "sub-1-e-8"
                             }
 
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[bottomleft])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[centerleft])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[bottomcenter])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[bottomleft])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[centerleft])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[bottomcenter])) {
                                 areSame = "sub-3-e-7"
                             }
                             break;
                         case 8:
 
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerright])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[centerright])) {
                                 areSame = 0
-                            } else if (Number.parseInt(item[0]) === Number.parseInt(mapItem[bottomcenter])) {
+                            } else if (itemValuAsNumber === Number.parseInt(mapItem[bottomcenter])) {
                                 areSame = 0
                             }
 
                             // Terrain type inner conner
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerright])
-                                && Number.parseInt(item[0]) === Number.parseInt(mapItem[bottomcenter])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[bottomright])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[centerright])
+                                && itemValuAsNumber === Number.parseInt(mapItem[bottomcenter])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[bottomright])) {
                                 areSame = 2
                             }
 
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[bottomcenter])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[centerright])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[bottomcenter])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[centerright])) {
                                 areSame = "sub-1-e-6"
                             }
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[centerright])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[bottomcenter])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[centerright])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[bottomcenter])) {
                                 areSame = "sub-1-e-8"
                             }
 
                             // Toching via diagonal aka two outset conners
-                            if (Number.parseInt(item[0]) === Number.parseInt(mapItem[bottomright])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[bottomcenter])
-                                && Number.parseInt(item[0]) !== Number.parseInt(mapItem[centerright])) {
+                            if (itemValuAsNumber === Number.parseInt(mapItem[bottomright])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[bottomcenter])
+                                && itemValuAsNumber !== Number.parseInt(mapItem[centerright])) {
                                 areSame = "sub-3-e-9"
                             }
                             break;
