@@ -28,16 +28,16 @@ template.innerHTML = `
     </style>
 
     <div data-render-block="controls">
-        <div>
+        <div data-action="slot-1">
             <span>⛺</span>
         </div>
-        <div>
+        <div data-action="slot-2">
             <span>🚩</span>
         </div>
-        <div>
+        <div data-action="slot-3">
             <span>⏳</span>
         </div>
-         <div>
+        <div data-action="slot-4">
             <span>📡</span>
         </div>
     </div>
@@ -54,26 +54,29 @@ const btnGraphics = [
 class Controls extends HTMLElement {
 
     static observedAttributes = ['type'];
-    
+    actionStatus = []
 
     constructor() {
         super();
 
         this.type = 'generic';
-    }
 
+    }
+    
     // Added to the DOM
     onMount() {
     }
-
+    
     connectedCallback() { 
         console.log('On connected'); 
-
+        
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
-
+        
         this.type = this.getAttribute('type');  
-     }
+        
+        this.setAction1()
+    }
 
     disconnectedCallback() { }
 
@@ -89,6 +92,28 @@ class Controls extends HTMLElement {
             console.log( this.type )
         }
     }
+
+
+    setAction1(root) {
+        let element = this.shadowRoot.querySelector('[data-action="slot-1"]')
+        element.addEventListener('click', (event) => {
+            this.actionStatus[1] = true
+            console.log('Action 1 ACTIVE')
+            console.log(this.actionStatus)
+        })
+    }
+
+    setAction2(root) {
+        let element = this.shadowRoot.querySelector('[data-action="slot-2"]')
+        element.addEventListener('click', (event) => {
+            console.log(event)
+            this.actionStatus[2] = true
+            console.log('Action 2 ACTIVE')
+            console.log(this.actionStatus)
+        })
+    }
+
+
 }
 
 customElements.define('controls-ui', Controls);

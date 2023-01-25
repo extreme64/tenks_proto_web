@@ -2,23 +2,63 @@
 <html>
 
 <head>
-  <title>Tanks Proto</title>
+  <title>Proto Summer - Map</title>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="src/styles.css">
-  <link rel="stylesheet" href="src/terrain.css">
-  <link rel="stylesheet" href="src/tiles.css">
-  <link rel="stylesheet" href="src/sub_tiles.css">
-  <script type="module" src="src/subTile.js"></script>
-  <script type="module" src="src/tile.js"></script>
-  <script type="module" src="src/map.js"></script>
-  <script type="module" src="src/index.js"></script>
+
+  <!-- WebComps -->
+  <script type="module" src="../../src/components/test_proto.js"></script>
+  <script type="module" src="../../src/components/general/panel.js"></script>
+  <script type="module" src="../../src/components/general/controls.js"></script>
+  <script type="module" src="../../src/components/map/minimap.js"></script>
+
+
+  <link rel="stylesheet" href="../../src/styles.css">
+  <link rel="stylesheet" href="../../src/terrain.css">
+  <link rel="stylesheet" href="../../src/tiles.css">
+  <link rel="stylesheet" href="../../src/sub_tiles.css">
+  <script type="module" src="../../src/subTile.js"></script>
+  <script type="module" src="../../src/tile.js"></script>
+  <script type="module" src="../../src/map.js"></script>
+  <script type="module" src="../../src/index.js"></script>
+
+
+
 </head>
 
 <body>
-  <div id="app">
+  <div id="game">
     <nav></nav>
     <section data-render-block="map-matrix"></section>
-    <nav></nav>
+
+    <hud data-render-block="hud-info">
+      <status>
+        <score>
+          <player data-player="1">4</player>
+          <player data-player="2">2</player>
+        </score>
+      </status>
+    </hud>
+
+    <ui data-render-block="hud-info">
+      <panel-ui panelType="mapView">
+        <minimap-preview slot="minimapPreview" maptype="tactical">
+          <span slot="typeDescription">Basic</span>
+          <span slot="minimapTracing">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+          </span>
+          <span slot="minimapControls">
+            <controls-ui type="minimap"></controls-ui>
+          </span>
+        </minimap-preview>
+
+      </panel-ui>
+
+      <!-- <panel data-render-block="info">info</panel>
+      <panel data-render-block="actions">actions</panel> -->
+    </ui>
   </div>
 
 </body>
