@@ -43,7 +43,6 @@ var ready = (callback) => {
 };
 
 ready(() => { 
-
 	const mapsFolderPath = './maps/' /*gameMapObject.path */
 	const mapProtoSummerPath = 'proto-summer/'
 

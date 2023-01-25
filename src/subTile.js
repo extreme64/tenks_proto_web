@@ -68,9 +68,7 @@ export default class SubTile extends ItemTile {
     
     static getClassStringById(id){
         let entry = SubTile.typesDictionary.filter(o => o.id === (id+1))
-
         return entry[0].name
-
     }
 
     static getHeightLevelById(id) {
