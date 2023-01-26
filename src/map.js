@@ -56,7 +56,7 @@ export default class GameMap {
 
     /* Render map data into a scene by creating all DOM elements */
     buildDom(mapSize) {
-
+        let itemTileObj
         let levelMapWrap = this.elementWrap
 
         let mapTilesCollection = this.tiles
@@ -72,7 +72,7 @@ export default class GameMap {
 
             /* Create tile */
             let itemElementDOM = document.createElement("span");
-            let classStringFromdictionary = SubTile.getClassStringById(item[0])
+            let classStringFromdictionary = ItemTile.getTypeCSSClass(item[0])
             let typeClassName
             if (classStringFromdictionary !== '') {
                 typeClassName = classStringFromdictionary
@@ -91,8 +91,8 @@ export default class GameMap {
             itemElementDOM.setAttributeNode(dataTextureAttr);
 
             /* Create sub-tiles */
-            let itemTileObj = new ItemTile(index, item[0], typeClassName)
-            let subTileStatusCollection = itemTileObj.calculateSubTypes(item, index, mapTilesCollection);
+            itemTileObj = new ItemTile(index, item[0], typeClassName)
+            let subTileStatusCollection = itemTileObj.calculateSubTypes(mapTilesCollection, this.mapSize);
             for (let subTileIndex = 1; subTileIndex <= this.mapSize + 1; subTileIndex++) {
 
                 itemElementDOM.append(
@@ -110,6 +110,7 @@ export default class GameMap {
 
             levelMapWrap.append(itemElementDOM);
         })
-    }
 
+        itemTileObj = null
+    }
 }

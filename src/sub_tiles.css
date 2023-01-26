@@ -21,31 +21,30 @@
 
 [data-obj-sub-type^="sub-0"] {
     /* background-color: rgba(167, 217, 232, 0.2); */
-    /* background: url("https://opengameart.org/sites/default/files/terrain_2.png") 670px -352px; */
     border: 1px solid blue;
 }
 
 /* grass1 */
 .mapTile.grass1 > [data-obj-sub-type^="sub-0"] {
     /* background-color: rgba(167, 217, 232, 0.2); */
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 670px -352px;
+    background: url("../terrain_2.png") 670px -352px;
 }
 
 
 .mapTile.grass1 > [data-obj-sub-type^="sub-1-e-1"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 670px -261px;
+    background: url("../terrain_2.png") 670px -261px;
     background-color: hsla(0, 100%, 50%, 1);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-1-e-2"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 638px -261px;
+    background: url("../terrain_2.png") 638px -261px;
     background-color: hsla(31, 100%, 50%, 1);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-1-e-3"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 606px -261px;
+    background: url("../terrain_2.png") 606px -261px;
     background-color: hsla(57, 100%, 50%, 1);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-1-e-4"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 670px -292px;
+    background: url("../terrain_2.png") 670px -292px;
     background-color: hsla(99, 100%, 50%, 1);
 }
 
@@ -56,58 +55,58 @@
 
 
 .mapTile.grass1>[data-obj-sub-type^="sub-1-e-6"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 606px -292px;
+    background: url("../terrain_2.png") 606px -292px;
     background-color: rgb(0, 217, 255);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-1-e-7"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 670px -319px;
+    background: url("../terrain_2.png") 670px -319px;
     background-color: rgb(0, 47, 255);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-1-e-8"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 638px -319px;
+    background: url("../terrain_2.png") 638px -319px;
     background-color: rgb(115, 0, 255);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-1-e-9"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 607px -319px;
+    background: url("../terrain_2.png") 607px -319px;
     background-color: rgb(251, 0, 255);
 }
 
 
 .mapTile.grass1>[data-obj-sub-type^="sub-2-e-1"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 606px -228px;
+    background: url("../terrain_2.png") 606px -228px;
     background-color: rgb(0, 217, 255);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-2-e-3"] {
-background: url("https://opengameart.org/sites/default/files/terrain_2.png") 638px -229px;
+background: url("../terrain_2.png") 638px -229px;
     background-color: rgb(115, 0, 255);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-2-e-7"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 605px -193px;
+    background: url("../terrain_2.png") 605px -193px;
     background-color: rgb(251, 0, 255);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-2-e-9"] {
-    background: url("https://opengameart.org/sites/default/files/terrain_2.png") 638px -192px;
+    background: url("../terrain_2.png") 638px -192px;
     background-color: rgb(255 199 123);
 }
 
 
 .mapTile.grass1>[data-obj-sub-type^="sub-3-e-1"] {
-    background: url(https://opengameart.org/sites/default/files/terrain_2.png) 671px -196px;
+    background: url(../terrain_2.png) 671px -196px;
     background-color: hsl(31deg 64% 32% / 67%);
     transform: rotate(121deg);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-3-e-3"] {
-    background: url(https://opengameart.org/sites/default/files/terrain_2.png) 671px -196px;
+    background: url(../terrain_2.png) 671px -196px;
     background-color: hsl(31deg 64% 32% / 67%);
     transform: rotate(221deg);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-3-e-7"] {
-    background: url(https://opengameart.org/sites/default/files/terrain_2.png) 671px -196px;
+    background: url(../terrain_2.png) 671px -196px;
     background-color: hsl(31deg 64% 32% / 67%);
     transform: rotate(28deg);
 }
 .mapTile.grass1>[data-obj-sub-type^="sub-3-e-9"] {
-    background: url(https://opengameart.org/sites/default/files/terrain_2.png) 671px -196px;
+    background: url(../terrain_2.png) 671px -196px;
     background-color: hsl(31deg 64% 32% / 67%);
     transform: rotate(311deg);
 }
