@@ -1,4 +1,6 @@
 'use strict';
+import Misc from "./../core/misc.js";
+import SubTile from "./subTile.js";
 
 export default class ItemTile {
 
@@ -82,25 +84,27 @@ export default class ItemTile {
     index
 
     /**
-     * Name as in CSS 
+     * CSS class string
      *
      * @memberof ItemTile
      */
     name
 
 
+
     /**
      * Creates an instance of ItemTile.
      * 
      * @param {*} id
+     * @param {*} index
      * @param {*} type
      * @param {string} [tileName="mapTile"]
      * @memberof ItemTile
      */
     constructor(id, type, tileName = "mapTile") {
         this.id = id
-        this.type = type
         this.index = id
+        this.type = type
         this.name = tileName
     }
 
@@ -122,150 +126,153 @@ export default class ItemTile {
         mapTilesCollection.map((mapTileObj, tileMapIndex) => mapItem[tileMapIndex] = [mapTileObj.typeId])
 
         let subTypesSetup = [];
-        let index = 0
+        let index = 1
         neigbours.forEach(function (neigbour, key) {
 
             let areSame
             let itemValueAsNumber = Number.parseInt(itemType)
 
-            if (neigbour >= 0 && neigbour <= mapSize * mapSize - 1) {
+            //Check for all sides
+            areSame = (itemValueAsNumber === Number.parseInt(mapItem[neigbour])) ? 0 : 1;
 
-                //Check for all sides
-                areSame = (itemValueAsNumber === Number.parseInt(mapItem[neigbour])) ? 0 : 1;
+            switch (index) {
 
-                // Clean edges more
-                if (true) {
-                    switch (index) {
-                        case 0:
+                /* FIXME: Stop tile link if edges continue within the map matrix, break on row end/start (8===9 && row==8 { areSame=false } */
+                case 1:
 
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])) {
-                                areSame = 0
-                            } else if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])) {
-                                areSame = 0 // horisontal edge
-                            }
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])
-                                && itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topleft')])) {
-                                areSame = 2
-                            }
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])) {
+                        areSame = 0
 
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerleft')])) {
-                                areSame = "sub-1-e-4"
-                            }
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topcenter')])) {
-                                areSame = "sub-1-e-2"
-                            }
-
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topleft')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topcenter')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerleft')])) {
-                                areSame = "sub-3-e-1"
-                            }
-                            break;
-                        case 2:
-
-                            // Strait out neighbore 
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])) {
-                                areSame = 0
-                            } else if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])) {
-                                areSame = 0
-                            }
-
-                            // Inset conner
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])
-                                && itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topright')])) {
-                                areSame = 2
-                            }
-
-                            // Edge line connect to neightbor hor/ver
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topcenter')])) {
-                                areSame = "sub-1-e-2"
-                            }
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerright')])) {
-                                areSame = "sub-1-e-6"
-                            }
-
-                            // Toching via diagonal aka two outset conners
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topright')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topcenter')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerright')])) {
-                                areSame = "sub-3-e-3"
-                            }
-                            break;
-                        case 6:
-
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])) {
-                                areSame = 0
-                            } else if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])) {
-                                areSame = 0
-                            }
-
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])
-                                && itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomleft')])) {
-                                areSame = 2
-                            }
-
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerleft')])) {
-                                areSame = "sub-1-e-4"
-                            }
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomcenter')])) {
-                                areSame = "sub-1-e-8"
-                            }
-
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomleft')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerleft')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomcenter')])) {
-                                areSame = "sub-3-e-7"
-                            }
-                            break;
-                        case 8:
-
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])) {
-                                areSame = 0
-                            } else if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])) {
-                                areSame = 0
-                            }
-
-                            // Terrain type inner conner
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])
-                                && itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomright')])) {
-                                areSame = 2
-                            }
-
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerright')])) {
-                                areSame = "sub-1-e-6"
-                            }
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomcenter')])) {
-                                areSame = "sub-1-e-8"
-                            }
-
-                            // Toching via diagonal aka two outset conners
-                            if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomright')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomcenter')])
-                                && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerright')])) {
-                                areSame = "sub-3-e-9"
-                            }
-                            break;
-                        default:
-                            break;
+                    } else if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])) {
+                        areSame = 0 // horisontal edge
+                    }
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])
+                        && itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topleft')])) {
+                        areSame = 2
                     }
 
-                }
-                subTypesSetup[index] = areSame;
-            } else {
-                subTypesSetup[index] = 0;
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerleft')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [1, 4]);
+                    }
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topcenter')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [1, 2]);
+                    }
+
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topleft')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topcenter')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerleft')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [3, 1]);
+                    }
+                    break;
+
+                case 3:
+
+                    // Strait out neighbore 
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])) {
+                        areSame = 0
+                    } else if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])) {
+                        areSame = 0
+                    }
+
+                    // Inset conner
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])
+                        && itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topright')])) {
+                        areSame = 2
+                    }
+
+                    // Edge line connect to neightbor hor/ver
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topcenter')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [1, 2]);
+                    }
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topcenter')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerright')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [1, 6]);
+                    }
+
+                    // Toching via diagonal aka two outset conners
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('topright')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('topcenter')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerright')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [3, 3]);
+                    }
+                    break;
+
+                case 7:
+
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])) {
+                        areSame = 0
+                    } else if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])) {
+                        areSame = 0
+                    }
+
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])
+                        && itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomleft')])) {
+                        areSame = 2
+                    }
+
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerleft')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [1, 4]);
+                    }
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerleft')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomcenter')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [1, 8]);
+                    }
+
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomleft')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerleft')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomcenter')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [3, 7]);
+                    }
+                    break;
+
+                case 9:
+
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])) {
+                        areSame = 0
+                    } else if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])) {
+                        areSame = 0
+                    }
+
+                    // Terrain type inner conner
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])
+                        && itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomright')])) {
+                        areSame = 2
+                    }
+
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomcenter')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerright')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [1, 6]);
+                    }
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('centerright')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomcenter')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [1, 8]);
+                    }
+
+                    // Toching via diagonal aka two outset conners
+                    if (itemValueAsNumber === Number.parseInt(mapItem[neigbours.get('bottomright')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('bottomcenter')])
+                        && itemValueAsNumber !== Number.parseInt(mapItem[neigbours.get('centerright')])) {
+                        areSame = Misc.scanf(SubTile.subTilesCSSClassTemplate, [3, 9]);
+                    }
+                    break;
+
+                default:
+                    break;
             }
+
+            subTypesSetup[index] = areSame;
+            if (!isNaN(subTypesSetup[index]) || 0 === subTypesSetup[index]) {
+                subTypesSetup[index] = Misc.scanf(SubTile.subTilesCSSClassTemplate, [subTypesSetup[index], index]);
+            }
+
             index++
         });
 
@@ -302,6 +309,12 @@ export default class ItemTile {
             adjacentTiles.set('bottomcenter', tileIndex + rowSize)
             adjacentTiles.set('bottomright', tileIndex + (rowSize + 1))
 
+            adjacentTiles.forEach((value, key) => {
+                if (value < 0) {
+                    adjacentTiles.set(key, null)
+                }
+            })
+
             return adjacentTiles
 
         } else {
@@ -335,38 +348,12 @@ export default class ItemTile {
      * @returns
      * @memberof ItemTile
      */
-    static tileSubPart(subPartIndex, subTileModifictionValue, debugDisplayValue, debugDisplayType = 0) {
+    tileSubPart(subPartIndex, subTileModifictionValue) {
 
-        let itemSubItemElementDOM = document.createElement("span");
-        let dataObjSubTypeAttr = document.createAttribute("data-obj-sub-type");
+        let tileSubpart = new SubTile(subPartIndex, subTileModifictionValue, this.index, this.type, this.name)
+        tileSubpart.debugDesplayValueType = 1
 
-        /* Render sub-til via. styling attribute selector */
-        if (isNaN(subTileModifictionValue[subPartIndex - 1])) { // FIXME: wtaf? "undefined" no tile found at index (e.g. -8)
-            dataObjSubTypeAttr.value = subTileModifictionValue[subPartIndex - 1]
-        } else {
-            dataObjSubTypeAttr.value = 'sub-' + subTileModifictionValue[subPartIndex - 1] + "-e-" + subPartIndex;
-        }
-        itemSubItemElementDOM.setAttributeNode(dataObjSubTypeAttr);
-
-        // Print item id or type ID in center sub box
-        if (subPartIndex === 5) {
-            itemSubItemElementDOM.textContent = this._debugDisplay([debugDisplayValue.parentIndex, debugDisplayValue.type], debugDisplayType)
-        }
-
-        return itemSubItemElementDOM
-    }
-
-    /**
-     * Debug value to show. None, index or type. [type=[-1,0,1]]
-     *
-     * @static
-     * @param {*} values
-     * @param {*} [type=-1]
-     * @returns
-     * @memberof ItemTile
-     */
-    static _debugDisplay(values, type = -1) {
-        return values[type]
+        return tileSubpart.render()
     }
 
     /**
