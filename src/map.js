@@ -1,4 +1,5 @@
 import ItemTile from "./tile.js";
+import SubTile from "./subTile.js";
 
 
 export default class GameMap {
@@ -95,9 +96,14 @@ export default class GameMap {
             for (let subTileIndex = 1; subTileIndex <= this.mapSize + 1; subTileIndex++) {
 
                 itemElementDOM.append(
-                    itemTileObj.tileSubPart(
+                    ItemTile.tileSubPart(
                         subTileIndex,
-                        subTileStatusCollection['initSubTypes']
+                        subTileStatusCollection['initSubTypes'],
+                        {
+                            'type': item,
+                            'parentIndex': index
+                        },
+                        1
                     )
                 );
             }
