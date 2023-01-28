@@ -11,7 +11,7 @@ export default class SubTile extends ItemTile {
      * @param {any} value
      */
     set debugDesplayValueType(value) {
-        this._debugDesplayValueType = 1
+        this._debugDesplayValueType = value
     }
 
     constructor(sid, subTileModifictionValues, parentId, parentType, parentName) {
