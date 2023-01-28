@@ -1,37 +1,5 @@
 import GameMap from "./map.js";
 
-
-// const mapItemTest1 = [
-// 	[1], [0], [0], [2], [2], [1], [2], [3],
-// 	[1], [1], [7], [2], [2], [5], [2], [3],
-// 	[1], [1], [1], [4], [0], [1], [2], [3],
-// 	[1], [3], [3], [3], [2], [7], [2], [3],
-// 	[3], [3], [3], [8], [2], [1], [4], [3],
-// 	[1], [5], [2], [5], [4], [1], [7], [3],
-// 	[1], [8], [1], [2], [4], [5], [5], [3],
-// 	[1], [1], [2], [4], [3], [1], [2], [3]
-// ];
-
-// const mapItemTest2 = [
-// 	[1], [4], [4], [3], [2], [1], [2], [2],
-// 	[1], [3], [7], [3], [2], [3], [3], [3],
-// 	[1], [1], [3], [2], [5], [3], [2], [2],
-// 	[1], [3], [3], [3], [2], [3], [3], [3],
-// 	[3], [3], [3], [8], [3], [3], [4], [3],
-// 	[1], [5], [2], [3], [4], [1], [7], [1],
-// 	[1], [3], [3], [2], [4], [3], [5], [5],
-// 	[1], [3], [3], [4], [3], [3], [2], [2]
-// ];
-
-
-// const rowSize = 8;
-// const colSize = 8;
-
-// let mapItem = mapItemTest2
-// let mapIdToLoad = 1 // form list of maps and their file paths
-
-
-
 /**
  *
  * 
@@ -61,23 +29,7 @@ ready(() => {
 	mapddd.then(
 		function (value) {
 
-			
-			// console.info(value.default.tilesData)
-			// console.info(mapItemTest2)
-
 			gameMapObject = new GameMap('[data-render-block="map-matrix"]', value.default.tilesData)
-			// gameMapObject = new GameMap('[data-render-block="map-matrix"]', mapItemTest2)
-
-
-
-			// console.table(value.default.title)
-			// document.title = value.default.title
-			// console.table(value.default.description)
-			// console.table(value.default.author.name)
-			// console.table(value.default.author.email)
-			// console.table(value.default.players)
-			// console.table(value.default.tilesData)
-
 
 			gameMapObject.buildDom()
 
@@ -88,9 +40,7 @@ ready(() => {
 			})
 		}
 	).then(
-		function(value) {		
-			
-		}
+		function(value) { }
 	)
 
 	// let wc = document.querySelector('test-protol')
