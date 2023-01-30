@@ -16,17 +16,18 @@ ready(() => {
 
 	let levelMapWrap = document.querySelector('[data-render-block="map-matrix"]');
 
-	let mapData
+	let levelData
 	async function loadMapData() {
-		mapData = await import('../' + mapsFolderPath + mapProtoSummerPath + 'data.json', { assert: { type: "json" } } );
-		return mapData
+		levelData = await import('../' + mapsFolderPath + mapProtoSummerPath + 'data.json', { assert: { type: "json" } } );
+		return levelData
 	}
 
 	
 	let gameMapObject
-	let mapddd = loadMapData()
+	let sceneLevelData = loadMapData()
 	
-	mapddd.then(
+	/* --- Loading --- */
+	sceneLevelData.then(
 		function (value) {
 
 			gameMapObject = new GameMap('[data-render-block="map-matrix"]', value.default.tilesData)
@@ -34,14 +35,17 @@ ready(() => {
 			gameMapObject.buildDom()
 
 			//feed data into minimap
-			customElements.whenDefined('minimap-preview').then(() => {
-				let minimap = document.querySelector('minimap-preview')
+			// TODO: do this from a component level
+			customElements.whenDefined('minimap-ui').then(() => {
+				let minimap = document.querySelector('minimap-ui')
 				minimap.setData(value.default.tilesData)
+				minimap.panelType = 'graphicsRender';
 			})
 		}
 	).then(
 		function(value) { }
 	)
+	/* --- --- */
 
 	// let wc = document.querySelector('test-protol')
 	// console.dir(wc.shadowRoot);
