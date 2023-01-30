@@ -9,6 +9,7 @@
   <script type="module" src="../../src/components/test_proto.js"></script>
   <script type="module" src="../../src/components/general/panel.js"></script>
   <script type="module" src="../../src/components/general/controls.js"></script>
+  <script type="module" src="../../src/components/general/buttonsCollection.js"></script>
   <script type="module" src="../../src/components/map/minimap.js"></script>
 
 
@@ -40,8 +41,35 @@
     </hud>
 
     <ui data-render-block="hud-info">
+
+
       <panel-ui panelType="mapView">
-        <minimap-preview slot="minimapPreview" maptype="tactical">
+
+        <span slot="topbar">
+          Topbar
+        </span>
+        <span slot="info">
+          pPnel info text here...
+        </span>
+        
+        <minimap-ui slot="usefulSpace" maptype="tactical">
+          <span slot="minimapControls">
+
+            <buttons-collection type="minimap-buttonsCollection">
+
+                <div data-action="slot-target">
+                  <span>💢</span>
+                </div>
+                <div data-action="slot-chat">
+                  <span>💬</span>
+                </div>
+                <div data-action="slot-ping">
+                  <span>❗</span>
+                </div>
+             
+            </buttons-collection>
+
+          </span>
           <span slot="typeDescription">Basic</span>
           <span slot="minimapTracing">
             <span>1</span>
@@ -49,15 +77,11 @@
             <span>3</span>
             <span>4</span>
           </span>
-          <span slot="minimapControls">
-            <controls-ui type="minimap"></controls-ui>
-          </span>
-        </minimap-preview>
+        </minimap-ui>
 
       </panel-ui>
 
-      <!-- <panel data-render-block="info">info</panel>
-      <panel data-render-block="actions">actions</panel> -->
+
     </ui>
   </div>
 

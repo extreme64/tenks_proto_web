@@ -15,11 +15,13 @@ template.innerHTML = `
     </style>
 
     <div data-render-block="panel-ui">
-        <slot name="minimapPreview"></slot>
+        <slot name="topbar"></slot>
+        <slot name="info"></slot>
+        <slot name="usefulSpace"></slot>
     </div>
 `;
 
-class PanelElement extends HTMLElement {
+export default class PanelElement extends HTMLElement {
 
     static observedAttributes = ['panelType'];
 

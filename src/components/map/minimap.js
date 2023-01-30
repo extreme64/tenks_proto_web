@@ -1,68 +1,110 @@
- 
-const template = document.createElement('template');
-template.innerHTML = `
-    <style>
-        [data-render-block="minimap"] {
-            z-index: 20;
-            width: 148px;
-            height: 148px;
-            background: gray;
-            position: absolute;
-            bottom: 0px;
-            left: 0px;
-        }
+'use strinct';
+import PanelElement from "./../general/panel.js";
 
-        [data-render-block="map_graphic"] {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        [data-render-block="map_graphic"] > span {
-            font-size: 0.4em;
-            color: rgb(251 19 255);
-            width: 18px;
-            text-align: center;
-            display: flex;
-            height: 12px;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+class Minimap extends PanelElement {
 
-    <div data-render-block="minimap">
-        <div>
-            <slot name="minimapControls">[..] [..]</slot>
-        </div>
-        <div>
-            Type: <slot name="typeDescription">Basic</slot>
-        </div>
-        <div data-render-block="map_graphic">
-            <slot name="minimapTracing"></slot>
-        </div>
-
-        <!-- <img src="/graphics-not-used/HUD on Behance_files/3d-art.png" alt="some 3d image -- shadow"> -->
-    </div>
-`;
- 
- 
-class Minimap extends HTMLElement {
+    template
 
     static observedAttributes = ['maptype', 'data'];
-    
+
 
     constructor() {
         super();
 
         // Custom element's property
         this.maptype = 'basic'
-
         this.data = []
+        this.template = document.createElement('template');
+        this.template.innerHTML = `
+            <style>
+                [data-render-block="minimap"] {
+                    z-index: 20;
+                    width: 148px;
+                    height: 148px;
+                    background: gray;
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0px;
+                }
+
+                [data-render-block="map_graphic"] {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                [data-render-block="map_graphic"] > span {
+                    font-size: 0.4em;
+                    color: rgb(251 19 255);
+                    width: 18px;
+                    text-align: center;
+                    display: flex;
+                    height: 12px;
+                    justify-content: center;
+                    align-items: center;
+                }
+            </style>
+
+            <div data-render-block="minimap">
+                <div>
+                    <slot name="minimapControls">[..] [..]</slot>
+                </div>
+                <div>
+                    Type: <slot name="typeDescription">Basic</slot>
+                </div>
+                <div data-render-block="map_graphic">
+                    <slot name="minimapTracing"></slot>
+                </div>
+            </div>
+        `;
     }
 
+    /* ~~~ */
+    // Added to the DOM
+    onMount() {
+    }
+
+    // Connected
+    connectedCallback() {
+        console.log('On connected');
+
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+
+
+        // TEST: Get custom element attribute set in HTML
+        console.dir(this.getAttribute('maptype'));
+
+        this.maptype = this.getAttribute('maptype');
+    }
+
+    // Disconnected (delete from DOM)
+    disconnectedCallback() {
+        console.log('On disconnected');
+    }
+
+    static get observedAttributes() {
+        return ['maptype', 'data'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+
+        if (oldValue === newValue) return;
+
+        if (name === 'maptype') {
+            this.maptype = newValue;
+            this.querySelector('[slot="typeDescription"]').textContent = this.getAttribute('maptype');
+        }
+
+        if (name === 'data') {
+            this.data = newValue;
+        }
+    }
+    /* ~~~ */
 
     /**
      * @param {any[]} mapData
      */
     setData(mapData) {
+
         this.data = mapData
 
         let minimapmapDataTracing = []
@@ -70,7 +112,7 @@ class Minimap extends HTMLElement {
         this.data.map((item, index) => {
 
             let color
-            switch(item.typeId){
+            switch (item.typeId) {
                 case 1:
                     color = "#865e40"
                     break
@@ -105,50 +147,9 @@ class Minimap extends HTMLElement {
 
     getData() {
         return this.data
-    } 
-
-    // Added to the DOM
-    onMount() {
     }
 
-    // Connected
-    connectedCallback() { 
-        console.log('On connected'); 
 
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
-
-      
-        // TEST: Get custom element attribute set in HTML
-        console.dir(this.getAttribute('maptype'));
-
-        this.maptype = this.getAttribute('maptype');  
-     }
-
-     // Disconnected (delete from DOM)
-    disconnectedCallback() { 
-        console.log('On disconnected'); 
-     }
-
-    static get observedAttributes() {
-        return ['maptype', 'data'];
-    }
-
-    attributeChangedCallback(name, oldValue, newValue) {
-
-        console.log('')
-
-        if (oldValue === newValue) return;
-
-        if (name === 'maptype') {
-            this.maptype = newValue;
-            this.querySelector('[slot="typeDescription"]').textContent = this.getAttribute('maptype');
-        }
-
-        if (name === 'data') {
-            this.data = newValue;
-        }
-    }
 
 
     /* --- */
@@ -165,4 +166,4 @@ class Minimap extends HTMLElement {
 
 }
 
-customElements.define('minimap-preview', Minimap);
+customElements.define('minimap-ui', Minimap);
