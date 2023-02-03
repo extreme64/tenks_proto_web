@@ -10,8 +10,10 @@
   <script type="module" src="../../src/components/general/panel.js"></script>
   <script type="module" src="../../src/components/general/controls.js"></script>
   <script type="module" src="../../src/components/general/buttonsCollection.js"></script>
-  <script type="module" src="../../src/components/map/minimap.js"></script>
 
+  <script type="module" src="../../src/components/ui/pingMap.js"></script>
+
+  <script type="module" src="../../src/components/map/minimap.js"></script>
 
   <link rel="stylesheet" href="../../src/styles.css">
   <link rel="stylesheet" href="../../src/terrain.css">
@@ -46,10 +48,10 @@
       <panel-ui panelType="mapView">
 
         <span slot="topbar">
-          Topbar
+          Topbar.
         </span>
         <span slot="info">
-          pPnel info text here...
+          Panel info text here...
         </span>
         
         <minimap-ui slot="usefulSpace" maptype="tactical">
@@ -64,7 +66,7 @@
                   <span>💬</span>
                 </div>
                 <div data-action="slot-ping">
-                  <span>❗</span>
+                  <ping-ui></ping-ui>
                 </div>
              
             </buttons-collection>

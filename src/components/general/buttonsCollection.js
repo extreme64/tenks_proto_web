@@ -38,7 +38,7 @@ export default class ButtonsCollection extends Controls {
         let elems = document.querySelectorAll('[data-action]')
         let controlsWrap = this.shadowRoot.querySelector('[data-render-block="controls"]')
         elems.forEach((uie, index) => {
-            super.setActionAdded(this, uie)
+            // super.setActionAdded(this, uie)
             controlsWrap.appendChild(uie);
         });
 
