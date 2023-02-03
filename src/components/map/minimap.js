@@ -5,8 +5,17 @@ class Minimap extends PanelElement {
 
     template
 
-    static observedAttributes = ['maptype', 'data'];
+    clicked = new CustomEvent('minimapClicked', {
+        detail: {
+            point: {
+                x: null,
+                y: null
+            },
+            map: null
+        }
+    });
 
+    static observedAttributes = ['maptype', 'data'];
 
     constructor() {
         super();
@@ -30,6 +39,8 @@ class Minimap extends PanelElement {
                 [data-render-block="map_graphic"] {
                     display: flex;
                     flex-wrap: wrap;
+                    position: relative;
+                    z-index: 10
                 }
                 [data-render-block="map_graphic"] > span {
                     font-size: 0.4em;
@@ -40,6 +51,14 @@ class Minimap extends PanelElement {
                     height: 12px;
                     justify-content: center;
                     align-items: center;
+                }
+                .minimap__whiteboard {
+                    display: flex;
+                    width: 100%;
+                    height: 96px;
+                    position: relative;
+                    z-index: 11;
+                    top: -96px;
                 }
             </style>
 
@@ -53,6 +72,7 @@ class Minimap extends PanelElement {
                 <div data-render-block="map_graphic">
                     <slot name="minimapTracing"></slot>
                 </div>
+                <div part="whiteboard" class="minimap__whiteboard"></div>
             </div>
         `;
     }
@@ -74,6 +94,31 @@ class Minimap extends PanelElement {
         console.dir(this.getAttribute('maptype'));
 
         this.maptype = this.getAttribute('maptype');
+
+        let sr = this.shadowRoot
+        this.addEventListener('mousedown', (e) => {
+
+            const target = e.target;
+
+            // Get the bounding rectangle of target
+            const rect = target.getBoundingClientRect();
+
+            // Mouse position
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            let ceMMClicked = new CustomEvent('minimapClicked', {
+                detail: {
+                    point: {
+                        x: x,
+                        y: y
+                    },
+                    map: this
+                }
+            });
+
+            this.dispatchEvent(ceMMClicked)
+        })
     }
 
     // Disconnected (delete from DOM)
