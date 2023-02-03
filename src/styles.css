@@ -5,11 +5,15 @@ body {
 
 
 #game {
-    display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  position: relative;
+
+  /* cursor: url("./../ui/cursors/aqx2w-topno.svg"); */
 }
+
 
 hud,
 ui {
@@ -23,6 +27,7 @@ ui {
 hud {
   z-index: 90;
 }
+
 hud status {
   display: flex;
   width: inherit;
@@ -30,6 +35,7 @@ hud status {
   justify-content: center;
   align-items: flex-start;
 }
+
 hud status score {
   color: white;
 }
@@ -37,3 +43,29 @@ hud status score {
 ui {
   z-index: 100;
 }
+
+/* Cursors */
+.cursor {
+  position: absolute;
+  display: block;
+  width: 20px;
+  border: 0;
+  margin: 5px;
+  padding: 3px;
+  text-align: justify;
+  z-index: 1000000;
+}
+
+.cursor--ping {
+  position: absolute;
+  display: block;
+  width: 20px;
+  border: 0;
+  margin: 5px;
+  padding: 3px;
+  text-align: justify;
+  z-index: 1000000;
+  /* cursor: url(http://www.rw-designer.com/cursor-extern.php?id=185644), auto; */
+}
+
+/* ~~~ */
