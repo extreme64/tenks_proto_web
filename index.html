@@ -7,151 +7,289 @@
 
   <!-- WebComps -->
   <!-- <script src="../"></script> -->
-  <link rel="stylesheet" href="./src/styles.css">
-
+  <link rel="stylesheet" href="./pages.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Iceland&family=Roboto+Condensed:wght@300;400;700&display=swap"
+    rel="stylesheet">
 </head>
 
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index-new.html">HOME</a></li>
-        <li><a href="game/game.html">PLAY</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
+
+
+<body class="game-loby">
+  <header class="game-loby__header">
+    <div class="flex container">
+      <div class="header-logo">
+        <img class="header-logo__img" src="./graphics-not-used/+ backdrops/logo.png" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="game/game.html">PLAY</a></li>
+          <li><a href="index.html#about-game">About</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="game-loby__hero hero-image container--full-width">
+      <div class="container">
+        <h1 class="page-title">Tanks Playgrounds</h1>
+        <h2 class="page-subtitle">2D Tank Strategy Game</h2>
+      </div>
+    </div>
   </header>
-  <main>
-    <nav>
-      <ul>
-        <li>HOME</li>
+  <main class="game-loby__main">
+
+    <nav class="game-loby__breadcrumbs">
+      <ul class="flex">
+        <li>>></li>
+        <li><a>Home</a></li>
         <!-- <li><a>HOME</a></li> -->
       </ul>
     </nav>
-    <section>
-      <h1>Tanks Playgrounds</h1>
 
-      <h2>2D Tank Strategy Game</h2>
-      <p>
-        Game where players control tanks and engage in tactical combat against other
-        players or AI opponents on a two-dimensional battlefield.
-      <p>
-        The objective is to defeat the opponent by strategically maneuvering the tanks
-        and using various weapons and tactics to outwit and destroy the enemy.
-      </p>
-      <p>
-        Players must balance their
-        offense and defense, making decisions such as when to advance, when to retreat,
-        and when to use different weapons and upgrades.
-      </p>
-      <p>
-        The game features multiple game modes, such as team deathmatch, capture the flag,
-        and control point, as well as various maps with different terrain and obstacles to navigate.
-      </p>
+    <section id="breaf">
+      <div class="">
+        <h2 class="game-loby__intro-section-title margin-t-level2">#BREAF</h2>
+        <h3>
+          Game where players control tanks and engage in tactical combat against other
+          players or AI opponents on a two-dimensional battlefield.
+        </h3>
+        <div class="layout--t-5050 fit-paragraphs-to-img">
+          <p class="intro-section__text">
+            The objective is to defeat the opponent by strategically maneuvering the tanks
+            and using various weapons and tactics to outwit and destroy the enemy.
+            <br>
 
-      <h2>Game Modes</h2>
-      <p>
+            Players must balance their offense and defense, making decisions such as when to advance, when to retreat,
+            and when to use different weapons and upgrades.
+            <br>
+
+            The game features multiple game modes, such as team deathmatch, capture the flag,
+            and control point, as well as various maps with different terrain and obstacles to navigate.
+          </p>
+          <div>
+            <p>
+              <img src="./graphics-not-used/ground_shaker_asset/89fBSLmIs0B0.png" alt="">
+            </p>
+            <p>
+              <img src="./graphics-not-used/ground_shaker_asset/track_turret_01_anim_4x.gif" alt="">
+            </p>
+            <p>
+              <img src="./graphics-not-used/ground_shaker_asset/track_turret_02_anim_4x.gif" alt="">
+            </p>
+
+          </div>
+        </div>
+        <button class="play-btn play-btn--yellow  margin-t-level1 margin-center"><a
+            href="./game/game.html">PLAY</a></button>
+      </div>
+    </section>
+
+    <section class="table-of-contents">
+      <h3 class=" margin-t-level2">Table Of Contens</h3>
       <ul>
-        <li>
-          Team Deathmatch
-        </li>
-        <li>
-          Capture The Flag
-        </li>
-        <li>
-          Control Point
+        <li><a href="#game_mods">Game Mods</a>
+          <ul>
+            <li><a href="#team_deathmatch">Team Deathmatch</a></li>
+            <li><a href="#capture_the_flag">Capture The Flag</a></li>
+            <li><a href="#control_point">Control Point</a></li>
+          </ul>
         </li>
       </ul>
-      </p>
+    </section>
 
-      <h3>Team Deathmatch</h3>
-      <p>
-        Mltiplayer top-down strategy/shooter game. In this mode, two teams compete against each
-        other to reach a certain number of kills, usually set to 20, 50, or 100. The objective of the game is to
-        eliminate as
-        many members of the opposing team as possible while protecting your own team members.
-      </p>
-      <p>
-        Players typically have several tank types to choose from. Equipment is set before game but players can also
-        collect
-        ammunition or boosts scattered throughout the map. The game continues until one team reaches the designated
-        number of
-        kills or until a set time limit expires.
-      </p>
-      <p>
-        In Team Deathmatch, players earn points for killing enemy players, and they lose points for being killed by an
-        opponent.
-        Points are used to rank players on a leaderboard, and the player with the most points at the end of the game is
-        declared
-        the winner.
-      </p>
-      <p>
+    <section class="copy">
+      <h2 id="game_mods" class="game-loby__section-first-title  margin-t-level3">Game Modes</h2>
+      <h3>
+        Team Deathmatch /
+        Capture The Flag /
+        Control Point
+      </h3>
+
+      <h3 id="team_deathmatch" class="game-loby__section-title margin-t-level3">Team Deathmatch</h3>
+      <div class="layout--t-5050 sub-layout--image-text">
+        <img class="fit-to-box" src="http://media.joinsquad.com/2018/June/MayRecap2018/belaya_pass_minimap.jpg"
+          alt="team deathmatch game mode illustration">
+        <div class="fit-paragraphs-to-img">
+          <p class="game-loby__main__p">
+            Mltiplayer top-down strategy/shooter game. In this mode, two teams compete against each
+            other to reach a certain number of kills, usually set to 20, 50, or 100. The objective of the game is to
+            eliminate as
+            many members of the opposing team as possible while protecting your own team members.
+          </p>
+          <p class="game-loby__main__p">
+            Players typically have several tank types to choose from. Equipment is set before game but players can also
+            collect
+            ammunition or boosts scattered throughout the map. The game continues until one team reaches the designated
+            number of
+            kills or until a set time limit expires.
+          </p>
+          <p class="game-loby__main__p">
+            In Team Deathmatch, players earn points for killing enemy players, and they lose points for being killed by
+            an
+            opponent.
+            Points are used to rank players on a leaderboard, and the player with the most points at the end of the game
+            is
+            declared
+            the winner.
+          </p>
+        </div>
+      </div>
+      <p class="game-loby__main__p--no-background text-center">
         Overall, Team Deathmatch requires teamwork, strategy to succeed.
       </p>
+      <button class="play-btn play-btn--yellow margin-t-level1 margin-center"><a
+          href="./game/game.html">PLAY</a></button>
 
-      <h3>Capture The Flag</h3>
-      <p>
-        Capture The Flag (CTF) is a popular game mode in which two teams compete against each other to capture a flag
-        placed in
-        the opponent’s territory and bring it back to their own base. The objective of the game is to gain control of
-        the flag
-        and protect it from the enemy team. The team that captures the flag the most times within a set time limit wins
-        the
-        game.
-      </p>
-      <p>
-        Each team has a designated base, where their flag is located, and the teams must defend their flag while
-        attempting to
-        capture the opponent’s flag. Players can respawn after they are killed, and the game often involves a variety of
-        weapons
-        and other items that can be used to help capture the flag, such as speed boosts, invisibility, and traps.
-      </p>
-      <p>
-        There are different variations of CTF, such as One-Flag CTF, in which players compete to capture a single flag
-        and bring
-        it back to their base, and Two-Flag CTF, in which players compete to capture both flags and bring them back to
-        their
-        base. The game mode is often played in first-person shooter video games, as well as in real-life events and
-        competitions.
-      </p>
-      <p>
+      <h3 id="capture_the_flag" class="game-loby__section-title margin-t-level3">Capture The Flag</h3>
+      <div class="layout--t-5050 sub-layout--image-text">
+        <div class="fit-paragraphs-to-img">
+          <p class="game-loby__main__p">
+            Capture The Flag (CTF) is a popular game mode in which two teams compete against each other to capture a
+            flag
+            placed in
+            the opponent’s territory and bring it back to their own base. The objective of the game is to gain control
+            of
+            the flag
+            and protect it from the enemy team. The team that captures the flag the most times within a set time limit
+            wins
+            the
+            game.
+          </p>
+          <p class="game-loby__main__p">
+            Each team has a designated base, where their flag is located, and the teams must defend their flag while
+            attempting to
+            capture the opponent’s flag. Players can respawn after they are killed, and the game often involves a
+            variety of
+            weapons
+            and other items that can be used to help capture the flag, such as speed boosts, invisibility, and traps.
+          </p>
+          <p class="game-loby__main__p">
+            There are different variations of CTF, such as One-Flag CTF, in which players compete to capture a single
+            flag
+            and bring
+            it back to their base, and Two-Flag CTF, in which players compete to capture both flags and bring them back
+            to
+            their
+            base. The game mode is often played in first-person shooter video games, as well as in real-life events and
+            competitions.
+          </p>
+        </div>
+        <img class="fit-to-box" src="./graphics-not-used/vND6r8Y8jjfH.png"
+          alt="capture the flag game mode illustration">
+      </div>
+      <p class="game-loby__main__p--no-background text-center">
         Overall, Capture The Flag is a fast-paced and challenging game mode that requires teamwork, strategy, and quick
         reflexes
         to win.
       </p>
+      <button class="play-btn play-btn--yellow margin-t-level1 margin-center"><a
+          href="./game/game.html">PLAY</a></button>
 
-
-      <h3>Control Point</h3>
-      <p>Control Point is a game mode in the popular multiplayer first-person shooter game Team Fortress 2. In this
-        mode, two
-        teams compete to capture and hold a series of control points located throughout the map. The objective is to
-        hold the
-        majority of the control points, which then begins to tick down a timer. Once the timer reaches zero, the team
-        with the
-        most control points wins the round.
-      </p>
-      <p>Each control point has a capture area that players must enter and stand within to capture the point. The more
-        players
-        standing in the capture area, the faster the point is captured. Once a team captures a control point, they must
-        defend
-        it from enemy players who will try to retake it.
-      </p>
-      <p>The game mode is fast-paced and requires teams to work together to coordinate their attacks and defenses.
-        Players can
-        switch classes and weapons to best suit the situation and can earn points for capturing and holding control
-        points,
-        killing enemies, and performing other actions.
-      </p>
-      <p>
+      <h3 id="control_point" class="game-loby__section-title margin-t-level3">Control Point</h3>
+      <div class="layout--t-5050 sub-layout--image-text">
+        <img class="fit-to-box" src="./graphics-not-used/WJbIytCODS33.png" alt="control point game mode illustration">
+        <div class="fit-paragraphs-to-img">
+          <p class="game-loby__main__p">Control Point is a game mode in the popular multiplayer first-person shooter
+            game Team
+            Fortress 2. In this
+            mode, two
+            teams compete to capture and hold a series of control points located throughout the map. The objective is to
+            hold the
+            majority of the control points, which then begins to tick down a timer. Once the timer reaches zero, the
+            team
+            with the
+            most control points wins the round.
+          </p>
+          <p class="game-loby__main__p">Each control point has a capture area that players must enter and stand within
+            to
+            capture the point. The more
+            players
+            standing in the capture area, the faster the point is captured. Once a team captures a control point, they
+            must
+            defend
+            it from enemy players who will try to retake it.
+          </p>
+          <p class="game-loby__main__p">The game mode is fast-paced and requires teams to work together to coordinate
+            their
+            attacks and defenses.
+            Players can
+            switch classes and weapons to best suit the situation and can earn points for capturing and holding control
+            points,
+            killing enemies, and performing other actions.
+          </p>
+        </div>
+      </div>
+      <p class="game-loby__main__p--no-background text-center">
         Control Point is a popular mode for players who enjoy objective-based games with a focus on teamwork and
         strategy.
       </p>
+      <button class="play-btn play-btn--yellow margin-t-level1 margin-center"><a
+          href="./game/game.html">PLAY</a></button>
+
     </section>
-    <aside>
+
+    <aside id="about-game" class="layout--t-3070 margin-t-level3">
+      <div>
+        <h2>About Game</h2>
+        <h3>Game: Tanks Playgrounds</h3>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <p>
+          This game is a prototype. Main function for it is to test game design theories. 
+        </p>
+        <p>    
+          Stack used: VanilaJS, Web Components, Web Sockets, HTML5/CSS3/SVG.
+        </p>
+      </div>
     </aside>
+
+    <aside id="about-author" class="layout--t-3070 margin-t-level3">
+      <div>
+        <h2>About Author</h2>
+        <h3>Mast_G</h3>
+      </div>
+      <div>
+        <h4>Bio</h4>
+        <p>
+          Mast_G is a video game designer from Europe. 
+          He has been involved with software design for over a decade.
+        </p>
+      </div>
+    </aside>
+  
   </main>
-  <footer>
-    <nav></nav>
+  <footer class="footer margin-t-level3">
+    <div class="footer__links flex">
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="game/game.html">Play</a></li>
+          <li><a href="index.html#about-game">About</a></li>
+        </ul>
+      </nav>
+      <nav class="social-links">
+        <ul>
+          <li><a href="index.html">TikTok</a></li>
+          <li><a href="index.html">YouTube</a></li>
+          <li><a href="index.html">Insagram</a></li>
+          <li><a href="index.html">Buy Me A Coffee</a></li>
+          <li><a href="index.html">Patreon</a></li>
+        </ul>
+      </nav>
+      <nav class="legal-links">
+        <ul>
+          <li><a href="index.html">Privacy</a></li>
+          <li><a href="index.html">Legal Terms</a></li>
+          <li><a href="index.html">Cookie Policy</a></li>
+          <li><a href="index.html">Cookie Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__copyright flex">
+      <div>© 2023 ForwardCreating.com. All rights reserved under CCA licence.</div>
+    </div>
   </footer>
 
 </body>

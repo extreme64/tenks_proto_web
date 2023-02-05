@@ -1,0 +1,421 @@
+/* Stock Config */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #c0cda7;
+    background-color: #3c3b3e;
+    font-family: sans-serif;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Iceland', sans-serif;
+}
+
+p {
+    font-size: 0.8em;
+    line-height: 1.1em;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Stock Config END */
+
+/* Utils */
+.container {
+    max-width: 1199px;
+    margin: auto;
+}
+
+.container--full-width {
+    max-width: 100%;
+    padding: 0;
+    margin: auto;
+}
+
+/* Macro layouts */
+.layout--t-5050 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.layout--t-7030 {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.layout--t-3070 {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+/* Proper fit */
+.flex {
+    display: flex;
+}
+
+.margin-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+img.fit-to-box {
+    width: 100%;
+}
+
+div.fit-paragraphs-to-img {
+    width: 100%;
+    display: grid;
+}
+
+/* margins */
+.margin-t-level1 {
+    margin-top: 30px;
+}
+
+.margin-t-level2 {
+    margin-top: 60px;
+}
+
+.margin-t-level3 {
+    margin-top: 120px;
+}
+
+/* Utils END */
+
+
+/* Design System */
+:root {
+    --acent-color-1-l: #9afeff;
+    --acent-color-1: #5dcbcc;
+    --acent-color-1-d: #439495;
+
+
+    --background-color: black;
+
+    --padding-mobile: 30px
+}
+
+.sub-layout--image-text {
+    --background-color: #2a2a2a;
+    display: grid;
+    align-items: center;
+    background-color: var(--background-color);
+}
+
+
+.play-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 171px;
+    height: 63px;
+    background-position: 370px 416px;
+    background-size: auto;
+    opacity: 0.85;
+    filter: drop-shadow(0px 7px 8px black);
+    transition: opacity 0.2s;
+}
+
+.play-btn--yellow {
+    background-image: url("./graphics-not-used/+\ ui/icons/Revolution_Ace_Jonny_Shaw/d6881c15567937.5c80f9742abf1.jpg");
+}
+
+.play-btn:hover,
+.play-btn:focus {
+    background-position: 370px 416px;
+    background-size: auto;
+    filter: drop-shadow(0px 8px 9px rgb(0, 0, 0));
+    opacity: 1;
+    cursor: pointer;
+}
+
+.play-btn:active {
+    background-position: 370px 416px;
+    filter: drop-shadow(0px 5px 10px rgb(12, 72, 80));
+    cursor: grab;
+}
+
+.play-btn>a {
+    background: linear-gradient(181deg, #fcb224, #a3740b);
+    padding: 5px 31px;
+    color: #0b0a09;
+    font-family: 'Iceland';
+    font-weight: 700;
+    font-size: 29px;
+    text-decoration: unset;
+}
+
+.page-title {
+    position: relative;
+    margin: 0.3em auto 0 auto;
+    padding: 0.2em 0 0 0;
+    font-size: 5em;
+    color: #f2e5d2;
+    z-index: 100;
+}
+
+.page-subtitle {
+    position: relative;
+    margin: 0 0 1em 0;
+    padding: 0.4em 60px 0.8em 60px;
+    font-family: sans-serif;
+    font-size: 1.2em;
+    color: #fcb224;
+    background: #1d1c1b50;
+    filter: drop-shadow(6px 6px 6px #000);
+    z-index: 100;
+}
+
+.page-title-info {
+    padding: 15px 40% 15px 15px;
+    background: #00000066;
+}
+
+/* Design System END */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* .game-loby */
+.game-loby {
+    padding: 0;
+    margin: 0;
+    background-blend-mode: exclusion;
+    background-image: url("./graphics-not-used/+\ backdrops/vehicles_crossout_4k_hd_crossout.jpg");
+    background-position: center -122px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.game-loby__header {
+    /* background-color: #16140d; */
+}
+
+.header-logo {
+    height: 126px;
+    position: relative;
+    top: -7px;
+    left: 14px;
+}
+
+.header-logo__img {
+    width: 167px;
+    filter: grayscale(1);
+}
+
+.game-loby__header nav>ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.game-loby__header nav>ul>li {
+    padding: 5px 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.game-loby__header nav>ul>li>a {
+    color: #504c4a;
+    text-decoration-style: dotted;
+}
+
+.game-loby__header nav>ul>li>a:hover,
+.game-loby__header nav>ul>li>a:focus {
+    color: #f2e5d2;
+    transition: color 0.3s;
+}
+
+.game-loby__hero {
+    max-height: 500px;
+    border-bottom: 3px solid #5dcbcc;
+    border-top: 15px solid #5dcbcc;
+    border-left: none;
+    border-right: none;
+    overflow: hidden;
+    filter: drop-shadow(6px 31px 26px #111);
+}
+
+.hero-image {
+    position: relative;
+    min-height: 590px;
+    background-blend-mode: exclusion;
+    background-image: url("./graphics-not-used/+\ backdrops/download (4).jpg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: initial;
+}
+
+.game-loby__main {
+    max-width: 1199px;
+    display: block;
+    margin: auto;
+}
+
+.game-loby__breadcrumbs {}
+
+.game-loby__breadcrumbs li>a {
+    color: var(--acent-color-1-d);
+}
+
+.table-of-contents li>a {
+    font-family: 'Iceland', sans-serif;
+    color: var(--acent-color-1);
+    text-decoration: auto;
+}
+
+.table-of-contents li>a:hover,
+.table-of-contents li>a:focus {
+    color: var(--acent-color-1-l);
+}
+
+.table-of-contents li>a:active {
+    color: #fcb224;
+}
+
+.game-loby__intro-section-title {
+    font-size: 2em;
+    text-shadow: 2px 4px 6px #1d1c1b;
+}
+
+.game-loby__section-first-title {
+    text-transform: uppercase;
+    font-size: 3em;
+}
+
+.intro-section__text {
+    font-size: 1.5em;
+    text-shadow: 2px 4px 6px #1d1c1b;
+}
+
+.game-loby__section-title {
+    font-size: 2.5em;
+}
+
+.game-loby__main__p {
+    display: flex;
+    background-color: #2a2a2ab5;
+    padding: 2em 4em;
+    /* margin: 1px 0; */
+    margin: 0;
+    font-size: 0.8em;
+    line-height: 1.1em;
+    font-family: 'Roboto Condensed', sans-serif;
+    border: 1px solid #504c4a;
+}
+
+.game-loby__main__p--no-background {
+    padding: 2em 4em;
+    margin: 1px 0;
+    font-size: 0.8em;
+    line-height: 1.1em;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.game-loby__main img {
+    width: calc(100% - 4px);
+    border: 2px solid #439495;
+}
+
+/* .game-loby END */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* Footers */
+.footer {
+    background-color: #1d1c1b;
+    color: #439495;
+}
+
+.footer__links,
+.footer__copyright {
+    padding: 1em 0 1em 0;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.footer__links nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__links nav li>a {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: cadetblue;
+    font-family: 'Iceland';
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.footer__links nav li>a:hover,
+.footer__links nav li>a:focus {
+    color: #c0cda7;
+    transition: 0.3s;
+}
+
+.footer__links nav li>a:active {
+    color: #fcb224;
+    transition: 0.3s;
+}
+
+.footer__copyright {
+    font-size: 15px;
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 1199px) {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    game-loby__main__p--no-background,
+    game-loby__main__p {
+        padding-left: var(--padding-mobile);
+        padding-right: var(--padding-mobile);
+    }
+}
+
+@media screen and (max-width: 719px) {
+
+    .layout--t-5050,
+    .layout--t-7030,
+    .layout--t-3070 {
+        display: grid;
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    game-loby__main__p--no-background,
+    game-loby__main__p {
+        text-align: center;
+    }
+}
