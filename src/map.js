@@ -58,13 +58,14 @@ export default class GameMap {
         let itemTileObj
         let levelMapWrap = this.elementWrap
 
-        let mapTilesCollection = this.tiles
-        let mapTilesCollectionSize = mapTilesCollection.length
+        // let mapTilesCollection = this.tiles
+        // let mapTilesCollectionSize = mapTilesCollection.length
 
-        let mapTilesArray = []
-        for (let r = 0; r < mapTilesCollectionSize; r++) {
-            mapTilesArray[r] = [this.tiles[r]["typeId"]]
-        }
+        // let mapTilesArray = []
+        // for (let r = 0; r < mapTilesCollectionSize; r++) {
+        //     mapTilesArray[r] = [this.tiles[r]["typeId"]]
+        // }
+        const mapTilesArray = this.tiles.map(tile => [tile.typeId]); // optimized
 
         /* Create DOM element to represent map's tiles */
         mapTilesArray.map((item, index) => {
@@ -91,7 +92,7 @@ export default class GameMap {
 
             /* Create sub-tiles */
             itemTileObj = new ItemTile(index, item[0], typeClassName)
-            let subTileStatusCollection = itemTileObj.calculateSubTypes(mapTilesCollection, this.mapSize);
+            let subTileStatusCollection = itemTileObj.calculateSubTypes(this.tiles, this.mapSize);
             for (let subTileIndex = 1; subTileIndex <= this.mapSize + 1; subTileIndex++) {
 
                 itemElementDOM.append(

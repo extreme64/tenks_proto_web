@@ -89,35 +89,29 @@ class Minimap extends PanelElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(this.template.content.cloneNode(true));
 
-
         // TEST: Get custom element attribute set in HTML
         console.dir(this.getAttribute('maptype'));
 
         this.maptype = this.getAttribute('maptype');
 
-        let sr = this.shadowRoot
+        // TODO: Test and remove offsets. "this.shadowRoot.addEventListener"
         this.addEventListener('mousedown', (e) => {
 
-            const target = e.target;
-
             // Get the bounding rectangle of target
-            const rect = target.getBoundingClientRect();
+            const rect = e.target.getBoundingClientRect();
 
             // Mouse position
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            let ceMMClicked = new CustomEvent('minimapClicked', {
-                detail: {
-                    point: {
-                        x: x,
-                        y: y
+            this.dispatchEvent(
+                new CustomEvent('minimapClicked', {
+                    detail: {
+                        point: { x, y },
+                        map: this,
                     },
-                    map: this
-                }
-            });
-
-            this.dispatchEvent(ceMMClicked)
+                })
+            );
         })
     }
 
@@ -193,21 +187,6 @@ class Minimap extends PanelElement {
     getData() {
         return this.data
     }
-
-
-
-
-    /* --- */
-    //return the style content
-    // getStyleContent() {
-    //     return `
-    //     span.marvel {
-    //         background: red;
-    //         color: white;
-    //     }
-    //     `;
-    // }
-
 
 }
 

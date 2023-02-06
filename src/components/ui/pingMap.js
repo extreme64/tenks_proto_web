@@ -136,6 +136,7 @@ export default class PingMapUI extends Controls {
         let top = event.detail.point.y-34 + "px"
         PingMapUI.pingElements[PingMapUI.pingCount] = this.createPingElement(left, top)
 
+        // FIXME: Cache the value of minimapWhiteboard instead of querying it every time 
         let minimapWhiteboard = event.detail.map.shadowRoot.querySelector('[part="whiteboard"]') 
         minimapWhiteboard.appendChild(PingMapUI.pingElements[PingMapUI.pingCount])
         if (PingMapUI.pingCount > 0) {
