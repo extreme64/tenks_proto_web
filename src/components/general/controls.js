@@ -42,7 +42,7 @@ export default class Controls extends HTMLElement {
 
     constructor() {
         super();
-
+ 
         this.type = 'generic';
         this.template = document.createElement('template');
         this.template.innerHTML = `
@@ -53,7 +53,7 @@ export default class Controls extends HTMLElement {
                 width: 100%;
                 background: red;
             }
-        [data-render-block="close_btn"] {
+             [data-render-block="close_btn"] {
                 content: '❌';
                 position: absolute;
                 top: 0px;
