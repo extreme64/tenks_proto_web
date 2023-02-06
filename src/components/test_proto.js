@@ -100,3 +100,17 @@ class TestProto extends HTMLElement {
 }
 
 customElements.define('test-proto', TestProto);
+
+
+// FIXME LOAD template HTML
+// import template from './template.js';
+
+// export default class MyModule extends HTMLElement {
+
+//     constructor() {
+//         super();
+//         this.shadow = this.attachShadow({ mode: "open" });
+//         this.template = new DOMParser().parseFromString(template, 'text/html').querySelector('template');
+//         this.shadow.appendChild(this.template.content);
+//     }
+// }
