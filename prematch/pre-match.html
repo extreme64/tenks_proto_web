@@ -1,0 +1,137 @@
+<!-- 
+    In this example, the GameMatchList Web Component extends the 
+    HTMLElement class and is defined using the customElements.define method. 
+    The component displays a list of active game matches, and the HTML 
+    template is rendered in the render method of the component. The buttons 
+    for joining a game, creating a new game, and going back to the lobby are 
+    created using standard HTML and JavaScript, and event listeners are 
+    attached to each button to handle the relevant logic. 
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Game</title>
+</head>
+
+<body>
+    <div id="root">
+        <h1>Active Game Matches</h1>
+        <game-match-list id="match-list"></game-match-list>
+        <button id="join-game">Join Game</button>
+        <button id="create-game">Create New Game</button>
+        <button id="back-to-lobby">Back to Lobby</button>
+    </div>
+
+    <script>
+        class GameRoomComponent  extends HTMLElement {
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+                this.shadowRoot.innerHTML = `
+                <style>
+                    .container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    }
+                    
+                    .join-game-btn {
+                    padding: 10px 20px;
+                    background-color: green;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    }
+                    
+                    .create-game-btn {
+                    padding: 10px 20px;
+                    background-color: blue;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    }
+                    
+                    .back-to-loby-btn {
+                    padding: 10px 20px;
+                    background-color: gray;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    }
+                </style>
+                <div class="container">
+                    <h2>Active Game Matches</h2>
+                    <ul id="active-matches"></ul>
+                    <button class="join-game-btn">Join Game</button>
+                    <button class="create-game-btn">Create New Game</button>
+                    <button class="back-to-loby-btn">Back to Lobby</button>
+                </div>
+                `;
+            }
+
+            connectedCallback() {
+                this.render();
+            }
+
+            render() {
+                this.innerHTML = `
+            <ul>
+              <li>Game 1</li>
+              <li>Game 2</li>
+              <li>Game 3</li>
+            </ul>
+          `;
+            }
+        }
+
+        customElements.define('game-rooms', GameRoomComponent);
+
+        const joinBtn = this.shadowRoot.querySelector('.join-game-btn');
+        joinBtn.addEventListener('click', this.joinGame.bind(this));
+
+        const createBtn = this.shadowRoot.querySelector('.create-game-btn');
+        createBtn.addEventListener('click', this.createGame.bind(this));
+
+        const backBtn = this.shadowRoot.querySelector('.back-to-loby-btn');
+        backBtn.addEventListener('click', this.backToLobby.bind(this));
+
+        this.socket = new WebSocket('ws://localhost:8080');
+        this.socket.onopen = function (event) {
+            console.log('WebSocket connection opened: ', event);
+        };
+
+        this.socket.onmessage = function (event) {
+            console.log('WebSocket message received: ', event.data);
+        };
+
+
+        joinGame() {
+            // Add player to the game room
+            this.socket.send(JSON.stringify({
+                action: 'join_game',
+                data: {
+                    playerName: 'player1'
+                }
+            }));
+        }
+        createGame() {
+            // Create a new game room
+            this.socket.send(JSON.stringify({
+                action: 'create_game',
+                data: {
+                    gameName: 'game1'
+                }
+            }));
+        }
+        
+    </script>
+</body>
+
+</html>
