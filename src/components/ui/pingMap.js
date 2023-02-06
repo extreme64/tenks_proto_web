@@ -1,6 +1,23 @@
 'use strinct';
 import Controls from "./../general/controls.js";
 
+/* TODO: Check list of issues */
+/**
+ * 
+ * FIXME: 
+ *  The 'use strict' statement is missing quotes, it should be '"use strict";'
+ *  The import statement is not using the correct relative file path, it should be something like "./controls.js"
+ * 
+ *  The 'minimap-ui' element is being queried using document.querySelector but it's not guaranteed to exist in the DOM yet. 
+ *    It should either be passed in as a parameter or queried inside the connectedCallback method.
+ * 
+ *  The inlineStyle property is not used anywhere in the code.
+ *  The animation keyframes in the originStyleAddition are missing units for the border widths.
+ *  The this.template.innerHTML assignment is not using backticks (``) to interpolate the icon.
+ *  The origin element's click event listener is being set to this.initialisePing but it's not clear how it will be triggered.
+ *  The minimapClicked event listener on the origin element is not being removed, potentially leading to memory leaks.
+ *  The createPingElement function is returning an element without setting its position or any other attributes.
+ */
 export default class PingMapUI extends Controls {
 
     status = new Map()
@@ -42,50 +59,49 @@ export default class PingMapUI extends Controls {
         this.type = 'pingMap';
         this.template = document.createElement('template');
         this.originStyleAddition = `
-        [part = "ping-wrap-part"] {
-            position: absolute;
-            top: -17px;
-            left: -17px;
-            display: flex;
-            width: 34px;
-            height: 34px;
-            align-items: center;
-            justify-content: center;
-        }
+            [part="ping-wrap-part"] {
+                position: absolute;
+                top: -17px;
+                left: -17px;
+                display: flex;
+                width: 34px;
+                height: 34px;
+                align-items: center;
+                justify-content: center;
+            }
 
-        [part = "ping-part"] {
-            position: relative;
-            display: flex;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
+            [part="ping-part"] {
+                position: relative;
+                display: flex;
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
 
-            animation: pingAnim 2.2s ease-in-out 3;
-        }
+                animation: pingAnim 2.2s ease-in-out 3;
+            }
 
-        @keyframes pingAnim {
-            0% {
-                background: #fff;
-                border: 0px solid #222;
-            }
-            20% {
-                background: #fff;
-                border: 15px solid #fff;
-            }
-            60% {
-                background: #aaa;
-                border: 0px solid #222;
-            }
-            80% {
-                background: #fff;
-                border: 10px solid #fff;
-            }
-            100% {
-                background: #fff;
-                border: 0px solid #222;
-            }
-        }
-        `
+            @keyframes pingAnim {
+                0% {
+                    background: #fff;
+                    border: 0px solid #222;
+                }
+                20% {
+                    background: #fff;
+                    border: 15px solid #fff;
+                }
+                60% {
+                    background: #aaa;
+                    border: 0px solid #222;
+                }
+                80% {
+                    background: #fff;
+                    border: 10px solid #fff;
+                }
+                100% {
+                    background: #fff;
+                    border: 0px solid #222;
+                }
+            }`;
 
         // this.template.innerHTML = this.inlineStyle`
         this.template.innerHTML += `<span>${this.icon}</span>`;
