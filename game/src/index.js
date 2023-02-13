@@ -1,4 +1,7 @@
 import GameMap from "./map.js";
+import { gameEnv } from "./../core/global.js";
+'use strict';
+
 
 /**
  *
@@ -11,14 +14,30 @@ var ready = (callback) => {
 };
 
 ready(() => { 
+
+
+
 	const mapsFolderPath = './maps/' /*gameMapObject.path */
 	const mapProtoSummerPath = 'proto-summer/'
 
-	let levelMapWrap = document.querySelector('[data-render-block="map-matrix"]');
+	// load html tpl
+	async function loadTemplate() {
+		const response = await fetch('./render/scenes/match/game.tpl');
+		const template = await response.text();
+		return template;
+	}
 
-	let levelData
+	const templatePromise = loadTemplate();
+
+	let game = document.querySelector('#game');
+	templatePromise.then((template) => {
+		game.innerHTML = template;
+
+	});
+
+	// let levelData
 	async function loadMapData() {
-		levelData = await import('../' + mapsFolderPath + mapProtoSummerPath + 'data.json', { assert: { type: "json" } } );
+		let levelData = await import('../' + mapsFolderPath + mapProtoSummerPath + 'data.json', { assert: { type: "json" } } );
 		return levelData
 	}
 
@@ -57,3 +76,6 @@ ready(() => {
 
 	// document.querySelector('[slot = "typeDescription"]').innerText = 'POI'
 });
+
+
+export const config = gameEnv

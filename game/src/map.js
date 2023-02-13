@@ -70,6 +70,10 @@ export default class GameMap {
         /* Create DOM element to represent map's tiles */
         mapTilesArray.map((item, index) => {
 
+            // FIXME: Add via. Document Fragment
+            // Adding elements one by one to the page DOM, with the unfortunate effect of re-rendering the DOM each time
+            document.createDocumentFragment();
+
             /* Create tile */
             let itemElementDOM = document.createElement("span");
             let classStringFromdictionary = ItemTile.getTypeCSSClass(item[0])

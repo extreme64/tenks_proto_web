@@ -1,5 +1,6 @@
 'use strinct';
 import Controls from "./../general/controls.js";
+import { gameEnv, gamePaths } from "./../../../core/global.js";
 
 /* TODO: Check list of issues */
 /**
@@ -44,7 +45,6 @@ export default class PingMapUI extends Controls {
         color
     ) {
         super();
-
 
         //TODO: inject CSS, dynamically on init. 'inimap-ui::part', into --origin-- element
         // This way, no need to couple comp. CSS into maon CSS file
@@ -134,7 +134,7 @@ export default class PingMapUI extends Controls {
         if (this.status.get('active')) return
 
         /* Set cursor: cross */
-        this.origin.style.cursor = 'url("./ui/cursors/aqx2w-topno.svg") 18.4 4.5, auto'
+        this.origin.style.cursor = `url("${gamePaths.ui}/cursors/aqx2w-topno.svg") 18.4 4.5, auto`
         
         /* Set action ACTIVE */
         this.status.set('active', true)
