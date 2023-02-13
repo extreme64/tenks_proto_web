@@ -10,8 +10,6 @@ body {
   align-items: center;
   z-index: 10;
   position: relative;
-
-  /* cursor: url("./../ui/cursors/aqx2w-topno.svg"); */
 }
 
 
@@ -44,29 +42,6 @@ ui {
   z-index: 100;
 }
 
-/* Animations */
-/* ::part(ping-wrap-part) {
-  position: absolute;
-  top: -17px;
-  left: -17px;
-  display: flex;
-  width: 34px;
-  height: 34px;
-  align-items: center;
-  justify-content: center;
-}
-
-::part(ping-part) {
-  position: relative;
-  display: flex;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-
-  animation: pingAnim 2.2s ease-in-out 3;
-} */
-/* ~~~ */
-
 /* Cursors */
 .cursor {
   position: absolute;
@@ -88,7 +63,6 @@ ui {
   padding: 3px;
   text-align: justify;
   z-index: 1000000;
-  /* cursor: url(http://www.rw-designer.com/cursor-extern.php?id=185644), auto; */
 }
 
 /* ~~~ */

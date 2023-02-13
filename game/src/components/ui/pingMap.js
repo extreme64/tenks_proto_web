@@ -134,7 +134,7 @@ export default class PingMapUI extends Controls {
         if (this.status.get('active')) return
 
         /* Set cursor: cross */
-        this.origin.style.cursor = 'url("./../ui/cursors/aqx2w-topno.svg") 18.4 4.5, auto'
+        this.origin.style.cursor = 'url("./ui/cursors/aqx2w-topno.svg") 18.4 4.5, auto'
         
         /* Set action ACTIVE */
         this.status.set('active', true)
