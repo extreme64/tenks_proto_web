@@ -15,56 +15,54 @@ var ready = (callback) => {
 
 ready(() => { 
 
-
+	let gameMapObject
+	let sceneLevelData 
 
 	const mapsFolderPath = './maps/' /*gameMapObject.path */
 	const mapProtoSummerPath = 'proto-summer/'
 
-	// load html tpl
+	// load html template
 	async function loadTemplate() {
-		const response = await fetch('./render/scenes/match/game.tpl');
+		const response = await fetch('./render/scenes/match/tpl-game.html');
 		const template = await response.text();
 		return template;
 	}
 
-	const templatePromise = loadTemplate();
-
-	let game = document.querySelector('#game');
-	templatePromise.then((template) => {
-		game.innerHTML = template;
-
-	});
-
-	// let levelData
+	// Load level data
 	async function loadMapData() {
 		let levelData = await import('../' + mapsFolderPath + mapProtoSummerPath + 'data.json', { assert: { type: "json" } } );
 		return levelData
 	}
 
+
+	const templatePromise = loadTemplate();
+
+	let game = document.querySelector('#game');
+
+
+	templatePromise.then((template) => {
+		game.innerHTML = template;
+	})
+	.finally( () => {
+
+		sceneLevelData = loadMapData()
+		/* --- Loading --- */
+		sceneLevelData.then(
+			function (value) {
+				gameMapObject = new GameMap('[data-render-block="map-matrix"]', value.default.tilesData)
+				gameMapObject.buildDom()
+			}
+		).then(
+			function(value) { }
+		)
+		/* --- --- */
+	});
+
+
 	
-	let gameMapObject
-	let sceneLevelData = loadMapData()
+	// let gameMapObject
+	// let sceneLevelData = loadMapData()
 	
-	/* --- Loading --- */
-	sceneLevelData.then(
-		function (value) {
-
-			gameMapObject = new GameMap('[data-render-block="map-matrix"]', value.default.tilesData)
-
-			gameMapObject.buildDom()
-
-			//feed data into minimap
-			// TODO: do this from a component level
-			customElements.whenDefined('minimap-ui').then(() => {
-				let minimap = document.querySelector('minimap-ui')
-				minimap.setData(value.default.tilesData)
-				minimap.panelType = 'graphicsRender';
-			})
-		}
-	).then(
-		function(value) { }
-	)
-	/* --- --- */
 
 	// let wc = document.querySelector('test-protol')
 	// console.dir(wc.shadowRoot);
