@@ -79,18 +79,34 @@ class Minimap extends PanelElement {
 
     /* ~~~ */
     // Added to the DOM
-    onMount() {
-    }
+    onMount() { }
 
     // Connected
     connectedCallback() {
         console.log('On connected');
 
+        /* Get tile data */
+        // FIXME: Central paths 
+        const mapsFolderPath = './../../maps/' /*gameMapObject.path */
+        const mapProtoSummerPath = 'proto-summer/'
+        async function loadMapData() {
+            let levelData = await import('../' + mapsFolderPath + mapProtoSummerPath + 'data.json', { assert: { type: "json" } });
+            return levelData
+        }
+
+        const dataProm = loadMapData();
+        dataProm.then( (value) => {
+                this.setData(value.default.tilesData)
+            }
+        )
+
+
+        this.data = []
+        this.panelType = 'graphicsRender';
+
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(this.template.content.cloneNode(true));
 
-        // TEST: Get custom element attribute set in HTML
-        console.dir(this.getAttribute('maptype'));
 
         this.maptype = this.getAttribute('maptype');
 
@@ -140,7 +156,7 @@ class Minimap extends PanelElement {
     /* ~~~ */
 
     /**
-     * @param {any[]} mapData
+     * @param {array} mapData
      */
     setData(mapData) {
 
@@ -177,8 +193,8 @@ class Minimap extends PanelElement {
                     color = "#221111"
                     break
             }
-            minimapmapDataTracing += `<span style="background-color: ${color}">${item.typeId}</span>`
 
+            minimapmapDataTracing += `<span style="background-color: ${color}">${item.typeId}</span>`
         })
 
         this.shadowRoot.querySelector('[data-render-block="map_graphic"]').innerHTML = minimapmapDataTracing;
