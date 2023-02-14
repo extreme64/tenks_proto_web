@@ -3,69 +3,60 @@
   flex-wrap: wrap;
   background-color: green;
   z-index: 9;
+  background: url("./../../game/maps/proto-summer/assets/terrain_2.png");
 }
 
 .mapTile.dirt1 {
   height: var(--map-item-size);
-  background: url("./../../game/maps/proto-summer/assets/terrain_2.png") 673px -64px;
-  /* background-color: green; */
+  background-position: 673px -64px;
   padding: 0;
 }
 
 .mapTile.dirt2 {
   height: var(--map-item-size);
-  background: url("./../../game/maps/proto-summer/assets/terrain_2.png") 576px -64px;
-  /* background-color: green; */
+  background-position: 576px -64px;
   padding: 0;
-  /* background-color: brown */
 }
 
 .mapTile.dirt3 {
   height: var(--map-item-size);
-  background: url("./../../game/maps/proto-summer/assets/terrain_2.png") 480px -64px;
+  background-position: 480px -64px;
   padding: 0;
-  /* background-color: orange */
 }
 
 .mapTile.grass1 {
   height: var(--map-item-size);
-  background: url("./../../game/maps/proto-summer/assets/terrain_2.png") 671px -256px;
-  /*   background-color: green; */
+  background-position: 671px -256px;
   padding: 0;
 }
 
 .mapTile.grass2 {
   height: var(--map-item-size);
-  background: url("./../../game/maps/proto-summer/assets/terrain_2.png") 574px -256px;
-  /* background-color: green; */
+  background-position: 574px -256px;
   padding: 0;
 }
 
 .mapTile.grass3 {
   height: var(--map-item-size);
-  background: url("./../../game/maps/proto-summer/assets/terrain_2.png") 480px -256px;
-  /* background-color: green; */
+  background-position: 480px -256px;
   padding: 0;
 }
 
 .mapTile.sand1 {
   height: var(--map-item-size);
-  background: url("./../../game/maps/proto-summer/assets/terrain_2.png") 0px -448px;
-  /* background-color: yellow; */
+  background-position: 0px -448px;
   padding: 0;
 }
 
 .mapTile.water1 {
   height: var(--map-item-size);
-  background: url("./../../game/maps/proto-summer/assets/terrain_2.png") 95px -64px;
-  /* background-color: yellow; */
+  background-position: 95px -64px;
   padding: 0;
 }
 
 .mapTile.hole1 {
   height: var(--map-item-size);
-  background: url("./../../game/maps/proto-summer/assets/terrain_2.png") 384px -64px;
-  /* background-color: green; */
+  background-position: 384px -64px;
   padding: 0;
 }
 
