@@ -1,5 +1,5 @@
 'use strict';
-import Misc from "./../core/misc.js";
+import Misc from "../misc/misc.js";
 import SubTile from "./subTile.js";
 
 export default class ItemTile {

@@ -1,5 +1,5 @@
-import GameMap from "./map.js";
-import { gameEnv } from "./../core/global.js";
+import GameMap from "./terrain/map.js";
+import { gameEnv } from "./misc/global.js";
 'use strict';
 
 

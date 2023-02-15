@@ -2,86 +2,33 @@
 <html>
 
 <head>
-  <title>Proto Summer - Map -- New</title>
-  <meta charset="UTF-8" />
+    <title>Proto Summer - Map -- New</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="./favicon---tank-4.svg">
 
-  <!-- WebComps -->
-  <!-- <script type="module" src="./../src/components/test_proto.js"></script> -->
-  <script type="module" src="./src/components/general/panel.js"></script>
-  <script type="module" src="./src/components/general/controls.js"></script>
-  <script type="module" src="./src/components/general/buttonsCollection.js"></script>
+    <script type="module" src="./src/misc/global.js"></script>
 
-  <script type="module" src="./src/components/ui/pingMap.js"></script>
+    <!-- WebComps -->
+    <script type="module" src="./render/components/general/panel.js"></script>
+    <script type="module" src="./render/components/general/controls.js"></script>
+    <script type="module" src="./render/components/general/buttonsCollection.js"></script>
 
-  <script type="module" src="./src/components/map/minimap.js"></script>
+    <script type="module" src="./render/components/ui/pingMap.js"></script>
 
-  <link rel="stylesheet" href="./src/styles.css">
-  <link rel="stylesheet" href="./src/terrain.css">
-  <link rel="stylesheet" href="./src/tiles.css">
-  <link rel="stylesheet" href="./src/sub_tiles.css">
-  <script type="module" src="./src/subTile.js"></script>
-  <script type="module" src="./src/tile.js"></script>
-  <script type="module" src="./src/map.js"></script>
-  <script type="module" src="./src/index.js"></script>
+    <script type="module" src="./render/components/map/minimap.js"></script>
 
-
-
+    <link rel="stylesheet" href="./src/game.css">
+    <link rel="stylesheet" href="./src/terrain/terrain.css">
+    <link rel="stylesheet" href="./src/terrain/tiles.css">
+    <link rel="stylesheet" href="./src/terrain/sub_tiles.css">
+    <script type="module" src="./src/terrain/subTile.js"></script>
+    <script type="module" src="./src/terrain/tile.js"></script>
+    <script type="module" src="./src/terrain/map.js"></script>
+    <script type="module" src="./src/game.js"></script>
 </head>
 
 <body>
-  <div id="game">
-    <nav></nav>
-    <section data-render-block="map-matrix"></section>
-
-    <hud data-render-block="hud-info">
-      <status>
-        <score>
-          <player data-player="1">4</player>
-          <player data-player="2">2</player>
-        </score>
-      </status>
-    </hud>
-
-    <ui data-render-block="hud-info">
-
-
-      <panel-ui panelType="mapView">
-
-        <span slot="topbar">
-          Topbar.
-        </span>
-        <span slot="info">
-          Panel info text here...
-        </span>
-        
-        <minimap-ui slot="usefulSpace" maptype="tactical">
-          <span slot="minimapControls">
-
-            <buttons-collection type="minimap-buttonsCollection">
-
-                <div data-action="slot-target">
-                  <span>💢</span>
-                </div>
-                <div data-action="slot-chat">
-                  <span>💬</span>
-                </div>
-                <div data-action="slot-ping">
-                  <ping-ui></ping-ui>
-                </div>
-             
-            </buttons-collection>
-
-          </span>
-          <span slot="typeDescription">Basic</span>
-          <span slot="minimapTracing"></span>
-        </minimap-ui>
-
-      </panel-ui>
-
-
-    </ui>
-  </div>
-
+    <div id="game"></div>
 </body>
 
 </html>

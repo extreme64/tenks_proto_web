@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   background-color: green;
   z-index: 9;
-  background: url("./../../game/maps/proto-summer/assets/terrain_2.png");
+  background: url("./../../maps/proto-summer/assets/terrain_2.png");
 }
 
 .mapTile.dirt1 {

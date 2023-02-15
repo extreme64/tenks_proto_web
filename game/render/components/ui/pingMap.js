@@ -1,6 +1,6 @@
 'use strinct';
 import Controls from "./../general/controls.js";
-import { gameEnv, gamePaths } from "./../../../core/global.js";
+import { gameEnv, gamePaths } from "../../../src/misc/global.js";
 
 /* TODO: Check list of issues */
 /**
